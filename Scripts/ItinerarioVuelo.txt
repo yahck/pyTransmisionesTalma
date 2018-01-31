@@ -1,0 +1,22 @@
+select * from LIM_W1_HL.flup
+
+select * from LIM_W1_HL.SCHP_Schedule_Plan 
+where
+SCHP_IMPORT_EXPORT = 'IM' 
+and SCHP_Airline_Code = 'T0' 
+--and SCHP_FLIGHT_NUMBER = '131'
+order by SCHP_FLIGHT_NUMBER asc
+--  30008886281587  T0  149
+
+ SCHP_Airline_Code = :1
+         AND SCHP_Flight_Number = :2
+         AND SCHP_Scheduled_Flight_Time = :3
+         AND SCHP_Aircraft_Type = :4
+         AND SCHP_End_Date <= :5
+         
+select *  from LIM_W1_HL.FWFR_Flight_WH_Flow_Relation where FWFR_FLIGHT_ISN = '30008886281587'
+
+select * from LIM_W1_HL.AARL_AIRLINE_AGENT_RELATION        
+
+
+select *    FROM LIM_W1_HL.HPSL_Homepage_Screen_Layout
