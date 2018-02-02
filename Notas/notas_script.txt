@@ -1,0 +1,5 @@
+select * from tlmimpo.TCMANI_IMPO
+select * from tlmimpo.TDMANI_IMPO
+
+select * from tlmimpo.TMREGISTROS_ACMA where GUTIPOSHC is not null 
+co_empr = '02' and co_term = '3507' and GUCODAEROLINEALET = 'LP'  and GUNUMVUELO = '2428' and fe_usua_modi = '29/11/2017'
