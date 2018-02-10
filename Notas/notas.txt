@@ -60,3 +60,12 @@ Fuentes:  \\172.16.28.21\ImpoWCF
 ----
 ver el tema de la modificación del servicio ACMA
 ver el tema de la Teledespacho
+
+------------
+
+
+
+GHA: Solo visualizará los indicadores de las responsabilidades del transportista y solo las líneas aéreas del grupo al que pertenece
+IMPO: Visualizará los indicadores de todos los grupos de responsabilidades
+EXPO: visualizara los indicadores de todos 
+
