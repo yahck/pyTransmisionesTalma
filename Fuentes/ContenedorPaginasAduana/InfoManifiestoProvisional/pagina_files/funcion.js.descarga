@@ -1,0 +1,1540 @@
+  //Devuelve .t. si el dato es un numerico de 4 mayor a 1992, para  las consultas
+  function Esanio(ano) {
+    if (ano.length < 4) 
+        return false;    
+    for(i=0;i<ano.length;i++) {
+        if ( !Esnumero(ano) ) {
+            return false;
+		}
+    } 
+    if (parseInt(ano) < 1993 ) {
+        return false;
+    }
+        return true;
+
+ }
+   
+	function fecha( cadena ) {
+   //Separador para la introduccion de las fechas
+   var separador = "/"
+
+   //Separa por dia, mes y año
+   if ( cadena.indexOf( separador ) != -1 ) {
+        var posi1 = 0
+        var posi2 = cadena.indexOf( separador, posi1 + 1 )
+        var posi3 = cadena.indexOf( separador, posi2 + 1 )
+        this.dia = cadena.substring( posi1, posi2 )
+        this.mes = cadena.substring( posi2 + 1, posi3 )
+        this.anio = cadena.substring( posi3 + 1, cadena.length )
+   } else {
+        this.dia = 0
+        this.mes = 0
+        this.anio = 0   
+   }
+    }
+   
+   function DiferenciaFechas (ffinal,finicio) {
+   //Obtiene los datos del formulario
+   CadenaFecha1 = ffinal 
+   CadenaFecha2 = finicio   
+   //Obtiene dia, mes y año
+   var fecha1 = new fecha( CadenaFecha1 )   
+   var fecha2 = new fecha( CadenaFecha2 )   
+   //Obtiene objetos Date
+   var miFecha1 = new Date( fecha1.anio, fecha1.mes, fecha1.dia )
+   var miFecha2 = new Date( fecha2.anio, fecha2.mes, fecha2.dia )
+   //Resta fechas y redondea
+   var diferencia = miFecha1.getTime() - miFecha2.getTime()
+   var dias = Math.floor(diferencia / (1000 * 60 * 60 * 24))
+   var segundos = Math.floor(diferencia / 1000)
+	return dias   
+}
+
+
+function esInteger(e) {
+var charCode
+if (navigator.appName == "Netscape") // Veo si es Netscape o Explorer (mas adelante lo explicamos)
+charCode = e.which // leo la tecla que ingreso
+else
+charCode = e.keyCode // leo la tecla que ingreso
+status = charCode 
+if (charCode > 31 && (charCode < 48 || charCode > 57)) { // Chequeamos que sea un numero comparandolo con los valores ASCII
+return false
+}
+}
+
+function esFloat(e) {
+var charCode
+if (navigator.appName == "Netscape") // Veo si es Netscape o Explorer (mas adelante lo explicamos)
+charCode = e.which // leo la tecla que ingreso
+else
+charCode = e.keyCode // leo la tecla que ingreso
+status = charCode 
+if (charCode > 31 && (charCode < 48 || charCode > 57) && charCode!=46) { // Chequeamos que sea un numero comparandolo con los valores ASCII
+return false
+}
+}
+
+
+
+
+
+function LTrim(s){
+	// Devuelve una cadena sin los espacios del principio
+	var i=0;
+	var j=0;
+	
+	// Busca el primer caracter <> de un espacio
+	for(i=0; i<=s.length-1; i++)
+		if(s.substring(i,i+1) != ' '){
+			j=i;
+			break;
+		}
+	return s.substring(j, s.length);
+}
+function RTrim(s){
+	// Quita los espacios en blanco del final de la cadena
+	var j=0;
+	
+	// Busca el último caracter <> de un espacio
+	for(var i=s.length-1; i>-1; i--)
+		if(s.substring(i,i+1) != ' '){
+			j=i;
+			break;
+		}
+	return s.substring(0, j+1);
+}
+function Trim(s){
+	// Quita los espacios del principio y del final
+	return LTrim(RTrim(s));
+}
+
+
+ function Verisim(TipoDato, VarTexto )           
+	   {                                                     
+	      var i  = 0;                                        
+	      var sw = 0;                                        
+	      var caracter;
+	      var msgalerta;                                     
+	      if( TipoDato == 1 )                                
+	         Cadena = '1234567890';                          
+	         msgalerta = 'Número.';
+	      if( TipoDato == 2 )                                
+	         Cadena = 'ABCDEFGHIJKLMNÑOPQRSTUVWXYZ ';        
+	         msgalerta = 'Caracter ';
+	      if( TipoDato == 3 )                                
+	         Cadena = 'ABCDEFGHIJKLMNÑOPQRSTUVWXYZ1234567890.-_@% ';
+	         msgalerta = 'Caracter ';          
+	      if( TipoDato == 4 )                               
+	         Cadena = 'ABCDEFGHIJKLMNÑOPQRSTUVWXYZ1234567890.-_@ *\/():,=+;áéíóúÁÉÍÓÚüÜ#%';
+	         msgalerta = 'Caracter ';        
+	      if( TipoDato == 5 )                
+	         { Cadena = '1234567890() -';
+	         msgalerta = 'Número ';
+	         }   
+		  if( TipoDato == 6 )                
+	         { Cadena = '1234567890 :';
+	         msgalerta = 'Número ';
+	         } 
+		  if( TipoDato == 7 )                
+	         { Cadena = 'ABCDEFGHIJKLMNÑOPQRSTUVWXYZ1234567890 ';
+	         msgalerta = 'Caracter ';          
+	         } 
+	      while ( i < VarTexto.length ) {                     
+	         caracter = VarTexto.charAt(i).toUpperCase();     
+	             if ( Cadena.indexOf( caracter ) < 0 ) {      
+	            alert(msgalerta+' Incorrecto.!!');            
+	            VarTexto = '';                                
+	            break;                                        
+	         }                                                
+	             i++;                                         
+	      }                                                   
+	      return VarTexto;                                    
+	   }   
+function Validamail(email) {
+var caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-.";
+var i;
+var valido = true;
+
+    if ( email.length == 0 ) {  ///   ESTA VACIO
+        return false;
+    }
+
+var pos_arroba = email.indexOf("@");
+var pos_ultimo_punto = email.lastIndexOf(".");
+var email_minus = email.toLowerCase();
+var trozo;
+
+	if (pos_arroba == -1) {
+		return false;    
+	}
+	if (pos_ultimo_punto == -1) {
+		return false;
+	}
+
+	trozo = email.substring(0, pos_arroba);
+	for(i=0;i<trozo.length;i++) {
+		if (caracteres.indexOf(trozo.charAt(i)) == -1) {
+			valido = false;
+			break;
+		}
+	}    
+	if (!valido) {
+		return false;
+	}
+	valido = true;
+	trozo = email.substring(1+pos_arroba, pos_ultimo_punto);
+	for(i=0;i<trozo.length;i++) {
+		if (caracteres.indexOf(trozo.charAt(i)) == -1) {
+			valido = false;
+			break;
+		}
+	}    
+	if (!valido) {
+		return false;
+	}
+	valido = true;
+	trozo = email.substring(1+pos_ultimo_punto, email.length);    
+	if ((trozo.length >= 2)&&(trozo.length <= 3)) {
+		for(i=0;i<trozo.length;i++) {
+			if (caracteres.indexOf(trozo.charAt(i)) == -1) {
+				valido = false;
+				break;
+			}
+		}    
+		if (!valido) {
+			return false;
+		}
+		} 
+		else {
+			return false;
+		}
+	return true;
+	}    
+
+
+ function Enviar(valor,formulario,tipo) {
+//     var f = "document.["+formulario+"]."+valor;
+    var f = document.forms[formulario];
+//    var f = document.forms["ALTAUSUARIO"];
+	 f = f+"."+valor;	
+	 var g = f;
+        alert(valor+"  -  - "+ document.Formulario.mcvis.value )
+
+        alert(f+"-- "+g.value);
+//        f.select();
+//      alert("entro"+valor+" - "+tipo+" -- "+formulario+" -- "+f);
+//    	return;                           
+}
+
+
+function ValidacionFecha(fecha) {
+    var numeros = "0123456789";
+    var pos1 = fecha.indexOf("/");
+    var pos2 = fecha.indexOf("/", pos1+1);
+    var dia, mes, ano;
+    var i;
+	    //alert("fecha:"+fecha);    
+	
+    dia = fecha.substring(0, pos1);
+    mes = fecha.substring(pos1+1, pos2);
+    ano = fecha.substring(pos2+1, fecha.length);
+
+    if ((dia.length < 1)||(dia.length > 2)) {
+		this.focus();
+//		this.select();
+	    alert("Ingrese la fecha correctamente ");
+        return false;
+    }
+    for(i=0;i<dia.length;i++) {
+        if (numeros.indexOf(dia.charAt(i)) == -1) {
+	    alert("Ingrese la fecha correctamente ");
+        return false;
+        }
+    }
+    if (dia < 1) {
+	    alert("Ingrese la fecha correctamente ");
+        return false;
+    }
+//	    alert("mes:"+mes);    
+    if ((mes < 1)||(mes > 12)) {
+	    alert("Ingrese el mes correctamente 1 al 12 ");
+        return false;
+    }
+
+
+    if ((mes.length < 1)||(mes.length > 2)) {
+	    alert("Ingrese la fecha correctamente ");
+        return false;
+    }
+  
+    for(i=0;i<mes.length;i++) {
+        if (numeros.indexOf(mes.charAt(i)) == -1) {
+	    alert("Ingrese la fecha correctamente ");
+            return false;
+        }
+    }
+
+    if (ano.length != 4) {
+	    alert("Ingrese la fecha correctamente ");
+	        return false;
+    }
+    for(i=0;i<ano.length;i++) {
+        if (numeros.indexOf(ano.charAt(i)) == -1) {
+	    alert("Ingrese la fecha correctamente ");
+            return false;
+        }
+    } 
+
+  
+    if (parseInt(ano,10) < 1880) {
+	    alert("Ingrese la fecha correctamente ");
+        return false;
+    }
+
+    if (validarFecha(parseInt(dia,10), parseInt(mes,10), parseInt(ano,10))) {
+        if (dia.length == 1) dia = "0" + dia;
+        if (mes.length == 1) mes = "0" + mes;
+//		    alert(dia + "/" + mes + "/" + ano);
+			return dia + "/" + mes + "/" + ano;
+
+    }
+}
+
+function ValFechaLen10(fecha) {
+    var numeros = "0123456789";
+    var pos1 = fecha.indexOf("/");
+    var pos2 = fecha.indexOf("/", pos1+1);
+    var dia, mes, ano;
+    var i;
+	    //alert("fecha:"+fecha);    
+	
+    dia = fecha.substring(0, pos1);
+    mes = fecha.substring(pos1+1, pos2);
+    ano = fecha.substring(pos2+1, fecha.length);
+
+    if (dia.length != 2) {
+		this.focus();
+//		this.select();
+	    alert("Ingrese la fecha correctamente ");
+        return false;
+    }
+    for(i=0;i<dia.length;i++) {
+        if (numeros.indexOf(dia.charAt(i)) == -1) {
+	    alert("Ingrese la fecha correctamente ");
+        return false;
+        }
+    }
+    if (dia < 1) {
+	    alert("Ingrese la fecha correctamente ");
+        return false;
+    }
+//	    alert("mes:"+mes);    
+    if ((mes < 1)||(mes > 12)) {
+	    alert("Ingrese el mes correctamente 1 al 12 ");
+        return false;
+    }
+
+
+    if (mes.length !=2 ) {
+	    alert("Ingrese la fecha correctamente ");
+        return false;
+    }
+  
+    for(i=0;i<mes.length;i++) {
+        if (numeros.indexOf(mes.charAt(i)) == -1) {
+	    alert("Ingrese la fecha correctamente ");
+            return false;
+        }
+    }
+
+    if (ano.length != 4) {
+	    alert("Ingrese la fecha correctamente ");
+	        return false;
+    }
+    for(i=0;i<ano.length;i++) {
+        if (numeros.indexOf(ano.charAt(i)) == -1) {
+	    alert("Ingrese la fecha correctamente ");
+            return false;
+        }
+    } 
+
+  
+    if (parseInt(ano,10) < 1880) {
+	    alert("Ingrese la fecha correctamente ");
+        return false;
+    }
+
+    if (validarFecha(parseInt(dia,10), parseInt(mes,10), parseInt(ano,10))) {
+        if (dia.length == 1) dia = "0" + dia;
+        if (mes.length == 1) mes = "0" + mes;
+//		    alert(dia + "/" + mes + "/" + ano);
+			return dia + "/" + mes + "/" + ano;
+
+    }
+}
+
+function y2k(numero) {
+    return (numero < 1000) ? numero + 1900 : numero; 
+}
+
+
+function validarFecha(dia, mes, anyo) {
+    var hoy = new Date();
+    
+    anyo = ((!anyo) ? y2k(hoy.getYear()) : anyo);
+    mes = ((!mes) ? hoy.getMonth():mes-1);
+    if (!dia) return false;
+    var test = new Date(anyo, mes, dia);
+    if ((y2k(test.getYear()) == anyo) && (mes == test.getMonth()) && (dia == test.getDate()))
+    return true;
+    else
+    return false;
+}
+
+
+function StartDate() {
+TMonth = new Array('Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio','Agosto', 'Setiembre', 'Octubre', 'Noviembre','Diciembre');
+TDate = new Date();
+CurMonth = TDate.getMonth();
+CurDay= TDate.getDate();
+TheDate = CurDay  + ' de ';
+TheDate += TMonth[CurMonth] + ' del ' + StartYear();
+return  TheDate;
+}
+
+function StartYear() {
+TDate = new Date();
+CurYear = TDate.getYear();
+	if (CurYear < 1980) 
+	{
+		if(CurYear < 100)
+		{
+			CurYear += 2000;
+		} else {
+			CurYear += 1900;
+		}
+	}
+return  CurYear;;
+}
+
+
+ function Escaracter(cadena) { 
+ var caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890. /-,%+-*¡´¡áéíóú{}[]"; 
+  
+     if ( cadena.length == 0 ) { 
+ 	     alert('Debe ingresar por lo menos 1 digítos ');  
+         return false; 
+     } 
+ 	for(i=0;i<cadena.length;i++) { 
+ 		if (caracteres.indexOf(cadena.charAt(i)) == -1) { 
+ 	     alert('Existe un carácter extraño ');  
+         return false; 
+ 		} 
+ 	} 
+  
+ 	return true; 
+ } 
+
+function Esnumero(num) {
+	var valbol=true;
+   var numeros = '0123456789.';
+   if ( num.length == 0 ) {
+         return false;
+   }
+
+// if ( num.length > 0 ) {
+	  for(i=0;i< num.length;i++) {
+		  if ( numeros.indexOf(num.charAt(i)) == -1 ) {
+			  valbol= false;
+			  return valbol;
+          }
+      }
+//   }
+     return valbol;
+}
+
+function EsRuc(num) {
+      if ( !Esnumero(num) )  { 
+           alert('Ingrese correctamente el RUC'); 
+           return false; 
+      } 
+      else if ( num.substring(0,2) != '10' && num.substring(0,2) != '20'  )  { 
+           alert('Ingrese correctamente el RUC'); 
+           return false; 
+      } 
+     else if (  num.length != 11 )  {    
+           alert('Verifique el RUC debe contener 11 digitos');  
+           return false;  
+     } 
+     else {    
+           a = num.substring(0, 1)*5 + num.substring(1, 2)*4 + num.substring(2, 3)*3 + num.substring(3, 4)*2 + num.substring(4, 5)*7 + num.substring(5, 6)*6 + num.substring(6, 7)*5 + num.substring(7, 8)*4 + num.substring(8, 9)*3 + num.substring(9, 10)*2 ;  
+           b = a/11;  
+           b =  Math.floor( b);  
+           c = 11 - ( a - b*11  );  
+           a = num.substring(10, 11) 
+           if ( c == 10 )  
+               c = 0;  
+           else if ( c == 11 )  
+               c = 1;  
+                 
+           if ( a != c ) { 
+              alert('Verifique  RUC es incorrecto');  
+              return false;  
+            }   
+  
+    } 
+    return true;  
+ }
+
+function PrintDate() {
+	Todays = new Date();
+	var dia=Todays.getDate();
+	if (dia<10) dia="0"+dia
+	var mes=(Todays.getMonth()+1);
+	if (mes<10) mes="0"+mes
+	//var ano=Todays.getYear();
+  var ano=Todays.getFullYear();
+	if (ano<=99 && ano>=90) {
+	   ano="19" + ano;
+	}
+	else {
+	  ano=ano;
+	}
+   return 	dia +"/"+ mes+"/"+ano;
+}
+
+function FormatDUA(num) {
+//   alert('num:'+num);
+   if ( num == 0 ) {
+         return 0;
+   }
+   if ( num > 0 ) {
+      for(i=0; num.length < 6 ;i++) {
+		  num = '0'+num;
+      }
+   }
+   return num;
+}
+
+ function lpad(caracter,num,longitud) {
+   if ( num == 0 ) {
+         return 0;
+   }
+   if ( num > 0 ) {
+      for(i=0; num.length < longitud ;i++) {
+		  num = caracter+num;
+      }
+   }
+   return num;
+}
+
+function FormatAgente(cod) {
+
+		if ( cod.length != 4  ) {
+	        alert('Verifique Código de Agente. ');
+			 return false;
+		}
+		else if ( !Esnumero( cod )  ) {
+	        alert('Verifique Código de Agente -- ');
+			 return false;
+		}
+		else
+			 return true;
+
+}
+
+
+function PintaEstado(nombre) {
+  return " <select size='1' name='"+nombre+"' style='font-family: Verdana; font-size: 8pt'>   "+
+    " <option value='10'>10 - NUEVO</option>   "+
+    " <option value='11'>11 - NUEVO ARMADO</option>   "+
+    " <option value='12'>12 - NUEVO DESARMADO</option>   "+
+    " <option value='13'>13 - NUEVO SEMIDESARMADO</option>   "+
+    " <option value='14'>14 - NUEVO SEMIARMADO</option>   "+
+    " <option value='15'>15 - NUEVO SINIESTRADO</option>   "+
+    " <option value='16'>16 - NUEVO AVERIADO</option>   "+
+    " <option value='17'>17 - NUEVO RECONSTRUIDO</option>   "+
+    " <option value='20'>20 - USADO</option>   "+
+    " <option value='21'>21 - USADO ARMADO</option>   "+
+    " <option value='22'>22 - USADO DESARMADO</option>   "+
+    " <option value='23'>23 - USADO SEMIDESARMADO</option>   "+
+    " <option value='24'>24 - USADO SEMIARMADO</option>   "+
+    " <option value='25'>25 - USADO SINIESTRADO</option>   "+
+    " <option value='26'>26 - USADO AVERIADO</option>   "+
+    " <option value='27'>27 - USADO RECONSTRUIDO</option>   "+
+    " <option value='30'>30 - BUENO</option>   "+
+    " <option value='40'>40 - INCOMPLETO</option>  "+ 
+    " <option value='50'>50 - DETERIORADO</option>   "+
+    " <option value='60'>60 - SINIESTRADO</option>   "+
+    " <option value='70'>70 - INSERVIBLE</option>   "+
+    " <option value='80'>80 - Reconstruido</option>   "+
+    " <option value='99'>99 - OTROS</option>   "+
+    " </select>  ";
+}
+
+
+function SelPais(nombre) {
+
+return " <select size='1' name='"+nombre+"' style='font-family: Verdana; font-size: 8pt'>   "+
+" <option value='AF'>AF - AFGHANISTAN</option>   "+
+" <option value='1D'>1D - AGUAS INTERNACIONALES</option>   "+
+" <option value='AL'>AL - ALBANIA</option>   "+
+" <option value='1M'>1M - ALEMANIA</option>   "+
+" <option value='DZ'>DZ - ALGERIA</option>   "+
+" <option value='AS'>AS - AMERICAN SAMOA</option>   "+
+" <option value='AD'>AD - ANDORRA</option>   "+
+" <option value='AO'>AO - ANGOLA</option>   "+
+" <option value='AI'>AI - ANGUILLA</option>   "+
+" <option value='AQ'>AQ - ANTARCTICA</option>   "+
+" <option value='AG'>AG - ANTIGUA AND BARBUDA</option>   "+
+" <option value='AR'>AR - ARGENTINA</option>   "+
+" <option value='AM'>AM - ARMENIA</option>   "+
+" <option value='AW'>AW - ARUBA</option>   "+
+" <option value='AU'>AU - AUSTRALIA</option>   "+
+" <option value='AT'>AT - AUSTRIA</option>   "+
+" <option value='AZ'>AZ - AZERBAIJAN</option>   "+
+" <option value='BS'>BS - BAHAMAS</option>   "+
+" <option value='BH'>BH - BAHRAIN</option>   "+
+" <option value='BD'>BD - BANGLADESH</option>   "+
+" <option value='BB'>BB - BARBADOS</option>   "+
+" <option value='BY'>BY - BELARUS</option>   "+
+" <option value='BE'>BE - BELGIUM</option>   "+
+" <option value='BZ'>BZ - BELIZE</option>   "+
+" <option value='BJ'>BJ - BENIN</option>   "+
+" <option value='BM'>BM - BERMUDA</option>   "+
+" <option value='BT'>BT - BHUTAN</option>   "+
+" <option value='BO'>BO - BOLIVIA</option>   "+
+" <option value='BA'>BA - BOSNIA AND HERZEGOVINA</option>   "+
+" <option value='BW'>BW - BOTSWANA</option>   "+
+" <option value='BV'>BV - BOUVET ISLAND</option>   "+
+" <option value='BR'>BR - BRAZIL</option>   "+
+" <option value='IO'>IO - BRITISH INDIAN OCEAN TERRITORY</option>   "+
+" <option value='BN'>BN - BRUNEI DARUSSALAM</option>   "+
+" <option value='BG'>BG - BULGARIA</option>   "+
+" <option value='BF'>BF - BURKINA FASO</option>   "+
+" <option value='BI'>BI - BURUNDI</option>   "+
+" <option value='KH'>KH - CAMBODIA</option>   "+
+" <option value='CM'>CM - CAMEROON</option>   "+
+" <option value='CA'>CA - CANADA</option>   "+
+" <option value='1N'>1N - CANAL (NORMANDAS), ISLAS</option>   "+
+" <option value='1O'>1O - CANTON Y ENDERBURRY</option>   "+
+" <option value='CV'>CV - CAPE VERDE</option>   "+
+" <option value='KY'>KY - CAYMAN ISLANDS</option>   "+
+" <option value='CF'>CF - CENTRAL AFRICAN REPUBLIC</option>   "+
+" <option value='TD'>TD - CHAD</option>   "+
+" <option value='1A'>1A - CHECOSLOVAQUIA</option>   "+
+" <option value='CL'>CL - CHILE</option>   "+
+" <option value='CN'>CN - CHINA</option>   "+
+" <option value='CX'>CX - CHRISTMAS ISLAND</option>   "+
+" <option value='CC'>CC - COCOS (KEELING) ISLANDS</option>   "+
+" <option value='CO'>CO - COLOMBIA</option>   "+
+" <option value='KM'>KM - COMOROS</option>   "+
+" <option value='1J'>1J - COMUNIDAD ECONOMICA EUROPEA</option>   "+
+" <option value='CG'>CG - CONGO</option>   "+
+" <option value='CK'>CK - COOK ISLANDS</option>   "+
+" <option value='1K'>1K - COSTA DE MARFIL</option>   "+
+" <option value='CR'>CR - COSTA RICA</option>   "+
+" <option value='CI'>CI - COTE D'IVOIRE</option>   "+
+" <option value='HR'>HR - CROATIA</option>   "+
+" <option value='CU'>CU - CUBA</option>   "+
+" <option value='CY'>CY - CYPRUS</option>   "+
+" <option value='CZ'>CZ - CZECH REPUBLIC</option>   "+
+" <option value='DK'>DK - DENMARK</option>   "+
+" <option value='DJ'>DJ - DJIBOUTI</option>   "+
+" <option value='DM'>DM - DOMINICA</option>   "+
+" <option value='DO'>DO - DOMINICAN REPUBLIC</option>   "+
+" <option value='TP'>TP - EAST TIMOR</option>   "+
+" <option value='EC'>EC - ECUADOR</option>   "+
+" <option value='EG'>EG - EGYPT</option>   "+
+" <option value='SV'>SV - EL SALVADOR</option>   "+
+" <option value='GQ'>GQ - EQUATORIAL GUINEA</option>   "+
+" <option value='ER'>ER - ERITREA</option>   "+
+" <option value='1G'>1G - ESCOCIA</option>   "+
+" <option value='EE'>EE - ESTONIA</option>   "+
+" <option value='ET'>ET - ETHIOPIA</option>   "+
+" <option value='FK'>FK - FALKLAND ISLANDS (MALVINAS)</option>   "+
+" <option value='FO'>FO - FAROE ISLANDS</option>   "+
+" <option value='FJ'>FJ - FIJI</option>   "+
+" <option value='FI'>FI - FINLAND</option>   "+
+" <option value='FR'>FR - FRANCE</option>   "+
+" <option value='FX'>FX - FRANCE, METROPOLITAN</option>   "+
+" <option value='GF'>GF - FRENCH GUIANA</option>   "+
+" <option value='PF'>PF - FRENCH POLYNESIA</option>   "+
+" <option value='TF'>TF - FRENCH SOUTHERN TERRITORIES</option>   "+
+" <option value='GA'>GA - GABON</option>   "+
+" <option value='GM'>GM - GAMBIA</option>   "+
+" <option value='1F'>1F - GAZA Y JERICO</option>   "+
+" <option value='GE'>GE - GEORGIA</option>   "+
+" <option value='DE'>DE - GERMANY</option>   "+
+" <option value='GH'>GH - GHANA</option>   "+
+" <option value='GI'>GI - GIBRALTAR</option>   "+
+" <option value='GR'>GR - GREECE</option>   "+
+" <option value='GL'>GL - GREENLAND</option>   "+
+" <option value='GD'>GD - GRENADA</option>   "+
+" <option value='GP'>GP - GUADELOUPE</option>   "+
+" <option value='GU'>GU - GUAM</option>   "+
+" <option value='GT'>GT - GUATEMALA</option>   "+
+" <option value='GN'>GN - GUINEA</option>   "+
+" <option value='GW'>GW - GUINEA-BISSAU</option>   "+
+" <option value='GY'>GY - GUYANA</option>   "+
+" <option value='HT'>HT - HAITI</option>   "+
+" <option value='HM'>HM - HEARD AND MC DONALD ISLANDS</option>   "+
+" <option value='HN'>HN - HONDURAS</option>   "+
+" <option value='1P'>1P - HONDURAS BRITANICAS</option>   "+
+" <option value='HK'>HK - HONG KONG</option>   "+
+" <option value='HU'>HU - HUNGARY</option>   "+
+" <option value='IS'>IS - ICELAND</option>   "+
+" <option value='IN'>IN - INDIA</option>   "+
+" <option value='ID'>ID - INDONESIA</option>   "+
+" <option value='XZ'>XZ - INTERNACIONAL ZONE</option>   "+
+" <option value='IR'>IR - IRAN (ISLAMIC REPUBLIC OF)</option>   "+
+" <option value='IQ'>IQ - IRAQ</option>   "+
+" <option value='IE'>IE - IRELAND</option>   "+
+" <option value='IL'>IL - ISRAEL</option>   "+
+" <option value='IT'>IT - ITALY</option>   "+
+" <option value='JM'>JM - JAMAICA</option>   "+
+" <option value='JP'>JP - JAPAN</option>   "+
+" <option value='1Q'>1Q - JONSTON, ISLAS</option>   "+
+" <option value='JO'>JO - JORDAN</option>   "+
+" <option value='KZ'>KZ - KAZAKHSTAN</option>   "+
+" <option value='KE'>KE - KENYA</option>   "+
+" <option value='KI'>KI - KIRIBATI</option>   "+
+" <option value='KP'>KP - KOREA, DEMOCRATIC PEOPLE'S REP</option>   "+
+" <option value='KR'>KR - KOREA, REPUBLIC OF</option>   "+
+" <option value='KW'>KW - KUWAIT</option>   "+
+" <option value='KG'>KG - KYRGYSTAN</option>   "+
+" <option value='LA'>LA - LAO PEOPLE'S DEMOCRATIC REPUBL</option>   "+
+" <option value='LV'>LV - LATVIA</option>   "+
+" <option value='LB'>LB - LEBANON</option>   "+
+" <option value='LS'>LS - LESOTHO</option>   "+
+" <option value='LR'>LR - LIBERIA</option>   "+
+" <option value='LY'>LY - LIBYAN ARAB JAMAHIRIYA</option>   "+
+" <option value='LI'>LI - LIECHTENSTEIN</option>   "+
+" <option value='LT'>LT - LITHUANIA</option>   "+
+" <option value='LU'>LU - LUXEMBOURG</option>   "+
+" <option value='MO'>MO - MACAU</option>   "+
+" <option value='1R'>1R - MACEDONIA</option>   "+
+" <option value='MK'>MK - MACEDONIA F.Y.R.              </option>   "+
+" <option value='MG'>MG - MADAGASCAR</option>   "+
+" <option value='MW'>MW - MALAWI</option>   "+
+" <option value='MY'>MY - MALAYSIA</option>   "+
+" <option value='MV'>MV - MALDIVES</option>   "+
+" <option value='ML'>ML - MALI</option>   "+
+" <option value='MT'>MT - MALTA</option>   "+
+" <option value='MH'>MH - MARSHALL ISLANDS</option>   "+
+" <option value='MQ'>MQ - MARTINIQUE</option>   "+
+" <option value='MR'>MR - MAURITANIA</option>   "+
+" <option value='MU'>MU - MAURITIUS</option>   "+
+" <option value='YT'>YT - MAYOTTE</option>   "+
+" <option value='MX'>MX - MEXICO</option>   "+
+" <option value='FM'>FM - MICRONESIA</option>   "+
+" <option value='1S'>1S - MIDWAY, ISLAS</option>   "+
+" <option value='MD'>MD - MOLDOVA</option>   "+
+" <option value='MC'>MC - MONACO</option>   "+
+" <option value='MN'>MN - MONGOLIA</option>   "+
+" <option value='MS'>MS - MONTSERRAT</option>   "+
+" <option value='MA'>MA - MOROCCO</option>   "+
+" <option value='MZ'>MZ - MOZAMBIQUE</option>   "+
+" <option value='MM'>MM - MYANMAR</option>   "+
+" <option value='NA'>NA - NAMIBIA</option>   "+
+" <option value='NR'>NR - NAURU</option>   "+
+" <option value='NP'>NP - NEPAL</option>   "+
+" <option value='NL'>NL - NETHERLANDS</option>   "+
+" <option value='AN'>AN - NETHERLANDS ANTILLES</option>   "+
+" <option value='NT'>NT - NEUTRAL ZONE</option>   "+
+" <option value='NC'>NC - NEW CALEDONIA</option>   "+
+" <option value='NZ'>NZ - NEW ZEALAND</option>   "+
+" <option value='NI'>NI - NICARAGUA</option>   "+
+" <option value='NE'>NE - NIGER</option>   "+
+" <option value='NG'>NG - NIGERIA</option>   "+
+" <option value='NU'>NU - NIUE</option>   "+
+" <option value='1E'>1E - NO DECLARADOS</option>   "+
+" <option value='NF'>NF - NORFOLK ISLAND</option>   "+
+" <option value='MP'>MP - NORTHERN MARIANA ISLANDS</option>   "+
+" <option value='NO'>NO - NORWAY</option>   "+
+" <option value='OM'>OM - OMAN</option>   "+
+" <option value='1T'>1T - PACIFICO, ISLAS DEL</option>   "+
+" <option value='1C'>1C - PAISES_NO_PREC.EN OP.ABAST.COM</option>   "+
+" <option value='PK'>PK - PAKISTAN</option>   "+
+" <option value='PW'>PW - PALAU</option>   "+
+" <option value='PA'>PA - PANAMA</option>   "+
+" <option value='PG'>PG - PAPUA NEW GUINEA</option>   "+
+" <option value='PY'>PY - PARAGUAY</option>   "+
+" <option value='PE'>PE - PERU</option>   "+
+" <option value='PH'>PH - PHILIPPINES</option>   "+
+" <option value='PN'>PN - PITCAIRN</option>   "+
+" <option value='PL'>PL - POLAND</option>   "+
+" <option value='PT'>PT - PORTUGAL</option>   "+
+" <option value='PR'>PR - PUERTO RICO</option>   "+
+" <option value='QA'>QA - QATAR</option>   "+
+" <option value='1U'>1U - REPUBLICA ARABE UNIDA</option>   "+
+" <option value='RE'>RE - REUNION</option>   "+
+" <option value='RO'>RO - ROMANIA</option>   "+
+" <option value='RU'>RU - RUSSIAN FEDERATION</option>   "+
+" <option value='RW'>RW - RWANDA</option>   "+
+" <option value='SH'>SH - SAINT HELENA</option>   "+
+" <option value='KN'>KN - SAINT KITTS AND NEVIS</option>   "+
+" <option value='LC'>LC - SAINT LUCIA</option>   "+
+" <option value='PM'>PM - SAINT PIERRE AND MIQUELON</option>   "+
+" <option value='VC'>VC - SAINT VINCENT AND THE GRENADIN</option>   "+
+" <option value='WS'>WS - SAMOA</option>   "+
+" <option value='SM'>SM - SAN MARINO</option>   "+
+" <option value='ST'>ST - SAO TOME AND PRINCIPE</option>   "+
+" <option value='SA'>SA - SAUDI ARABIA</option>   "+
+" <option value='SN'>SN - SENEGAL</option>   "+
+" <option value='SC'>SC - SEYCHELLES</option>   "+
+" <option value='SL'>SL - SIERRA LEONE</option>   "+
+" <option value='SG'>SG - SINGAPORE</option>   "+
+" <option value='SK'>SK - SLOVAKIA</option>   "+
+" <option value='SI'>SI - SLOVENIA</option>   "+
+" <option value='SB'>SB - SOLOMON ISLANDS</option>   "+
+" <option value='SO'>SO - SOMALIA</option>   "+
+" <option value='ZA'>ZA - SOUTH AFRICA</option>   "+
+" <option value='GS'>GS - SOUTH GEORGIA AND THE SOUTH SA</option>   "+
+" <option value='ES'>ES - SPAIN</option>   "+
+" <option value='LK'>LK - SRI LANKA</option>   "+
+" <option value='SD'>SD - SUDAN</option>   "+
+" <option value='SR'>SR - SURINAME</option>   "+
+" <option value='SJ'>SJ - SVALBARD AND JAN MAYEN ISLANDS</option>   "+
+" <option value='SZ'>SZ - SWAZILAND</option>   "+
+" <option value='SE'>SE - SWEDEN</option>   "+
+" <option value='CH'>CH - SWITZERLAND</option>   "+
+" <option value='SY'>SY - SYRIAN ARAB REPUBLIC</option>   "+
+" <option value='TW'>TW - TAIWAN                        </option>   "+
+" <option value='TJ'>TJ - TAJIKISTAN</option>   "+
+" <option value='TZ'>TZ - TANZANIA, UNITED REPUBLIC OF</option>   "+
+" <option value='1W'>1W - TERRITORIO AUTONOMO DE PALESTI</option>   "+
+" <option value='TH'>TH - THAILAND</option>   "+
+" <option value='99'>99 - TODOS LOS PAISES</option>   "+
+" <option value='TG'>TG - TOGO</option>   "+
+" <option value='TK'>TK - TOKELAU</option>   "+
+" <option value='TO'>TO - TONGA</option>   "+
+" <option value='TT'>TT - TRINIDAD AND TOBAGO</option>   "+
+" <option value='TN'>TN - TUNISIA</option>   "+
+" <option value='TR'>TR - TURKEY</option>   "+
+" <option value='TM'>TM - TURKMENISTAN</option>   "+
+" <option value='TC'>TC - TURKS AND CAICOS ISLANDS</option>   "+
+" <option value='TV'>TV - TUVALU</option>   "+
+" <option value='UG'>UG - UGANDA</option>   "+
+" <option value='UA'>UA - UKRAINE</option>   "+
+" <option value='AE'>AE - UNITED ARAB EMIRATES</option>   "+
+" <option value='GB'>GB - UNITED KINGDOM</option>   "+
+" <option value='US'>US - UNITED STATES</option>   "+
+" <option value='UM'>UM - UNITED STATES MINOR OUTLYING I</option>   "+
+" <option value='1H'>1H - URSS</option>   "+
+" <option value='UY'>UY - URUGUAY</option>   "+
+" <option value='UZ'>UZ - UZBEKISTAN</option>   "+
+" <option value='VU'>VU - VANUATU</option>   "+
+" <option value='VA'>VA - VATICAN CITY STATE (HOLY SEE)</option>   "+
+" <option value='VE'>VE - VENEZUELA</option>   "+
+" <option value='VN'>VN - VIET NAM</option>   "+
+" <option value='1I'>1I - VIETNAM (DEL NORTE)</option>   "+
+" <option value='VG'>VG - VIRGIN ISLANDS (BRITISH)</option>   "+
+" <option value='VI'>VI - VIRGIN ISLANDS (U.S.)</option>   "+
+" <option value='1V'>1V - WAKE, ISLA</option>   "+
+" <option value='WF'>WF - WALLIS AND FUTUNA ISLANDS</option>   "+
+" <option value='EH'>EH - WESTERN SAHARA</option>   "+
+" <option value='YE'>YE - YEMEN</option>   "+
+" <option value='YU'>YU - YUGOSLAVIA</option>   "+
+" <option value='ZR'>ZR - ZAIRE</option>   "+
+" <option value='ZM'>ZM - ZAMBIA</option>   "+
+" <option value='ZW'>ZW - ZIMBABWE</option>   "+
+" <option value='1L'>1L - ZONA DEL CANAL DE PANAMA</option>   "+
+" <option value='1B'>1B - ZONAS FRANCAS DEL PERU</option>   "+
+    " </select>  ";
+}
+
+function SelUnidad(nombre) {
+return " <select size='1' name='"+nombre+"' style='font-family: Verdana; font-size: 8pt'>   "+
+" <option value='BAL'>BAL - BALDE                         </option>   "+
+" <option value='BRR'>BRR - BARRILES                      </option>   "+
+" <option value='BOB'>BOB - BOBINAS                       </option>   "+
+" <option value='BLS'>BLS - BOLSA                         </option>   "+
+" <option value='BOT'>BOT - BOTELLAS                      </option>   "+
+" <option value='CAJ'>CAJ - CAJA                          </option>   "+
+" <option value='CRT'>CRT - CARTONES                      </option>   "+
+" <option value='CM2'>CM2 - CENTIMETRO CUADRADO</option>   "+
+" <option value='C3'>C3 - CENTIMETRO CUBICO             </option>   "+
+" <option value='CM3'>CM3 - CENTIMETRO CUBICO             </option>   "+
+" <option value='CM'>CM - CENTIMETRO LINEAL             </option>   "+
+" <option value='U2'>U2 - CIENTO DE UNIDADES</option>   "+
+" <option value='CIL'>CIL - CILINDRO                      </option>   "+
+" <option value='CON'>CON - CONOS                         </option>   "+
+" <option value='12U'>12U - DOCENA</option>   "+
+" <option value='126'>126 - DOCENA POR 10**6</option>   "+
+" <option value='FDO'>FDO - FARDO                         </option>   "+
+" <option value='FRC'>FRC - FRASCOS                       </option>   "+
+" <option value='GLE'>GLE - GALON INGLES (4,545956L)      </option>   "+
+" <option value='G'>G - GRAMO                         </option>   "+
+" <option value='GR'>GR - GRAMO                         </option>   "+
+" <option value='GRU'>GRU - GRUESA                        </option>   "+
+" <option value='HL'>HL - HECTOLITRO                    </option>   "+
+" <option value='HOJ'>HOJ - HOJA                          </option>   "+
+" <option value='JGS'>JGS - JUEGO                         </option>   "+
+" <option value='KG'>KG - KILOGRAMO</option>   "+
+" <option value='KGA'>KGA - KILOGRAMO INGREDIENTE ACTIVO  </option>   "+
+" <option value='KG3'>KG3 - KILOGRAMO POR 10**3 (TM)</option>   "+
+" <option value='KG6'>KG6 - KILOGRAMO POR 10**6</option>   "+
+" <option value='KM'>KM - KILOMETRO                     </option>   "+
+" <option value='KWH'>KWH - KILOVATIO HORA</option>   "+
+" <option value='KW3'>KW3 - KILOVATIO HORA POR 10**3 (1000</option>   "+
+" <option value='KW6'>KW6 - KILOVATIO HORA POR 10**6</option>   "+
+" <option value='KIT'>KIT - KIT                           </option>   "+
+" <option value='LAT'>LAT - LATAS                         </option>   "+
+" <option value='LB'>LB - LIBRAS</option>   "+
+" <option value='L'>L - LITRO</option>   "+
+" <option value='L 6'>L 6 - LITRO POR 10**6</option>   "+
+" <option value='MWH'>MWH - MEGAWATT HORA                 </option>   "+
+" <option value='M'>M - METRO</option>   "+
+" <option value='M2'>M2 - METRO CUADRADO</option>   "+
+" <option value='M26'>M26 - METRO CUADRADO POR 10**6</option>   "+
+" <option value='M3'>M3 - METRO CUBICO</option>   "+
+" <option value='M36'>M36 - METRO CUBICO POR 10**6</option>   "+
+" <option value='M 6'>M 6 - METRO POR 10**6</option>   "+
+" <option value='MGA'>MGA - MILIGRAMO ACTIVO              </option>   "+
+" <option value='MGR'>MGR - MILIGRAMOS                    </option>   "+
+" <option value='ML'>ML - MILILITRO                     </option>   "+
+" <option value='MM'>MM - MILIMETRO                     </option>   "+
+" <option value='MM2'>MM2 - MILIMETRO CUADRADO            </option>   "+
+" <option value='MM3'>MM3 - MILIMETRO CUBICO              </option>   "+
+" <option value='MLL'>MLL - MILLARES</option>   "+
+" <option value='U6'>U6 - MILLON DE UNIDADES</option>   "+
+" <option value='MU'>MU - MUESTRAS</option>   "+
+" <option value='OZ'>OZ - ONZAS</option>   "+
+" <option value='PAI'>PAI - PAILAS</option>   "+
+" <option value='PAL'>PAL - PALETAS</option>   "+
+" <option value='PAQ'>PAQ - PAQUETE</option>   "+
+" <option value='2U'>2U - PAR</option>   "+
+" <option value='2U6'>2U6 - PAR POR 10**6</option>   "+
+" <option value='PS'>PS - PIES</option>   "+
+" <option value='PS2'>PS2 - PIES CUADRADOS</option>   "+
+" <option value='PS3'>PS3 - PIES CUBICOS</option>   "+
+" <option value='PST'>PST - PIES TABLARES(MADERA)         </option>   "+
+" <option value='PZA'>PZA - PIEZAS</option>   "+
+" <option value='PL'>PL - PLACAS</option>   "+
+" <option value='PLC'>PLC - PLANCHAS</option>   "+
+" <option value='PLG'>PLG - PLIEGO</option>   "+
+" <option value='PUL'>PUL - PULGADAS</option>   "+
+" <option value='KI'>KI - QUILATE</option>   "+
+" <option value='KI6'>KI6 - QUILATE 10**6</option>   "+
+" <option value='QQ'>QQ - QUINTAL METRICO (100 KG)      </option>   "+
+" <option value='QUT'>QUT - QUINTAL USA (100 LB)          </option>   "+
+" <option value='RAM'>RAM - RAMOS</option>   "+
+" <option value='RES'>RES - RESMA                         </option>   "+
+" <option value='ROL'>ROL - ROLLOS</option>   "+
+" <option value='SAC'>SAC - SACO</option>   "+
+" <option value='SET'>SET - SET</option>   "+
+" <option value='TAM'>TAM - TAMBOR</option>   "+
+" <option value='TIR'>TIR - TIRAS                         </option>   "+
+" <option value='TC'>TC - TONELADA CORTA                </option>   "+
+" <option value='TCS'>TCS - TONELADA CORTA SECA           </option>   "+
+" <option value='TM3'>TM3 - TONELADA CUBICA               </option>   "+
+" <option value='TL'>TL - TONELADA LARGA                </option>   "+
+" <option value='TLS'>TLS - TONELADA LARGA SECA           </option>   "+
+" <option value='TMS'>TMS - TONELADA METRICA SECA         </option>   "+
+" <option value='TM'>TM - TONELADAS                     </option>   "+
+" <option value='TUB'>TUB - TUBOS                         </option>   "+
+" <option value='U'>U - UNIDAD</option>   "+
+" <option value='U 6'>U 6 - UNIDAD PO 10**6</option>   "+
+" <option value='U 3'>U 3 - UNIDAD POR 10**3              </option>   "+
+" <option value='GAL'>GAL - US GALON (3,7843 L)           </option>   "+
+" <option value='YD'>YD - YARDA                         </option>   "+
+" <option value='YD2'>YD2 - YARDA CUADRADA                </option>   "+
+" <option value='YAR'>YAR - YARDAS                        </option>   "+
+    " </select>  ";
+}
+
+function SelTipoCom(nombre) {
+return " <select size='1' name='"+nombre+"' style='font-family: Verdana; font-size: 8pt'>   "+
+" <option value='3'>3 - COMERCIANTE</option>   "+
+" <option value='2'>2 - DISTRIBUIDOR (DEALER)</option>   "+
+" <option value='1'>1 - FABRICANTE</option>   "+
+" <option value='4'>4 - OTROS</option>   "+
+    " </select>  ";
+}
+
+function SelIcoterm(nombre) {
+return " <select size='1' name='"+nombre+"' style='font-family: Verdana; font-size: 8pt'>   "+
+" <option value='CIP'>CIP - LUGAR DE DESTINO CONVENIDO</option>   "+
+" <option value='CPT'>CPT - LUGAR DE DESTINO CONVENIDO</option>   "+
+" <option value='DDP'>DDP - LUGAR DE DESTINO CONVENIDO EN </option>   "+
+" <option value='DDU'>DDU - LUGAR DE DESTINO CONVENIDO EN </option>   "+
+" <option value='DAF'>DAF - LUGAR DE ENTREGA CONVENIDO EN </option>   "+
+" <option value='CFR'>CFR - PUERTO DE DESTINO CONVENIDO</option>   "+
+" <option value='DEQ'>DEQ - PUERTO DE DESTINO CONVENIDO</option>   "+
+" <option value='DES'>DES - PUERTO DE DESTINO CONVENIDO</option>   "+
+" <option value='CIF'>CIF - PUERTO DE DESTINO CONVENIDO</option>   "+
+" <option value='FAS'>FAS - PUERTO DE EMBARQUE CONVENIDO</option>   "+
+" <option value='FOB'>FOB - PUERTO DE EMBARQUE CONVENIDO</option>   "+
+" <option value='FCA'>FCA - PUNTO DESIGNADO</option>   "+
+" <option value='EXW'>EXW - UBICACION DE LA FABRICA</option>   "+
+    " </select>  ";
+}
+
+
+function DUA(nomadu,aduana , orden , dest , mod , tipo_despa, ordemb , nomimport,
+	 tip_docu , num_docu  , direcc , nume_corre, fecingsi , canal , ubigeo ,
+	nombtransp , numtransp , anomanif , nummanif , viatrans , tipviatrans , 
+	fecemb , emptranstr , codemptranstr , unidtrans , aduanasalr , terminal , codi_alma,
+	cenfin , fpagox , tfob_dolpo , tfle_dolar , tseg_dolar , ltotajuste , valoraduana,
+	totpesoneto , totpesobrut, totcantbult , totunidfisi , totunidcome) {
+/*
+
+	*/
+  return  "  <TABLE BORDER='1' CELLSPACING=1 BORDERCOLOR='#000000' CELLPADDING=4 width=756 height='52'>   "+
+   "  <TR><TD VALIGN='TOP' COLSPAN=3 width='139' height='9'>   "+
+   "  <P><font face='verdana,arial' color='#000080' size=1>Aduana</font></TD>   "+
+   "  <TD VALIGN='TOP' width='46' height='9'>   "+
+   "  <font face='verdana,arial' color='#000080' size=1>Código</font></TD>   "+
+   "  <TD VALIGN='TOP' COLSPAN=6 rowspan='2' width='339' height='40'>   "+
+   "  <P align='center'><B><FONT face='Times New Roman' SIZE=3>DECLARACION UNICA DE ADUANAS&nbsp;   "+
+   "  (A)</FONT></B></TD>   "+
+   "  <TD VALIGN='middle' width='11' rowspan='2' height='40' bgcolor='#006699'>   "+
+   "  <b><font face='verdana,arial' size=1 color=#ffffff>2</font></b></TD>   "+
+   "  <TD VALIGN='middle' width='157' rowspan='2' height='40' colspan='3' bgcolor='#006699'>   "+
+   "  <b><font size='2' color=#ffffff>REGISTRO DE ADUANA</font></b></TD></TR>   "+
+   "  <TR><TD VALIGN='TOP' COLSPAN=3 width='139' height='19'>   "+
+   "  <font size='2'><B>"+nomadu+" </B></font></TD>   "+
+   "  <TD VALIGN='TOP' width='46' height='19'>   "+
+   "  <font size='2'><B>"+aduana+"</B></font></TD></TR></TABLE>   "+
+   "  <TABLE BORDER='1' CELLSPACING=1 BORDERCOLOR='#000000' CELLPADDING=4 width=756 height='1'>   "+
+   "  <TR><TD width='135' VALIGN='TOP' COLSPAN=2 HEIGHT=1>   "+
+   "  <P ALIGN='left'><font face='verdana,arial' color='#000080' size=1>Nº Orden</font></TD>   "+
+   "  <TD width='90' VALIGN='TOP' COLSPAN=2 HEIGHT=1>   "+
+   "  <font face='verdana,arial' color='#000080' size=1>Destinación</font></TD>   "+
+   "  <TD width='60' VALIGN='TOP' COLSPAN=2 HEIGHT=1>   "+
+   "  <font face='verdana,arial' color='#000080' size=1>Modalidad</font></TD>   "+
+   "  <TD width='95' VALIGN='TOP' COLSPAN=2 HEIGHT=1>   "+
+   "  <font face='verdana,arial' color='#000080' size=1>Tipo Despacho</font></TD>   "+
+   "  <TD width='121' VALIGN='TOP' COLSPAN=2 HEIGHT=1>   "+
+   "  <font face='verdana,arial' color='#000080' size=1>Nº Orden Embarque</font></TD>   "+
+   "  <TD width='179' VALIGN='middle' colspan=3 HEIGHT=1 rowspan='4'>   "+
+   "  <B><P><font face='verdana,arial' color='#000080' size=1>Nº Declaración: </font><font face='arial' size=2>"+nume_corre+"</font></P>   "+
+   "  <P><font face='verdana,arial' color='#000080' size=1>Fecha Numeración:</font><font face='arial' size=2>"+fecingsi+"</font></P>   "+
+   "  <P><font face='verdana,arial' color='#000080' size=1>Sujeto a:&nbsp;</font><font face='verdana,arial' size=2><font face='verdana,arial' color='#FF0000' size=-2>"+canal+"</font></P>   "+
+   "  <P>&nbsp;</P>   "+
+   "  </font></b></TD></TR>   "+
+   "  <TR><TD width='135' VALIGN='TOP' COLSPAN=2 HEIGHT=6>   "+
+   "  &nbsp;<font size='2'><B>"+orden+"</B></font></TD>   "+
+   "  <TD width='90' VALIGN='TOP' COLSPAN=2 HEIGHT=6>   "+
+   "  &nbsp;<font size='2'><B>"+dest+"</B></font></TD>   "+
+   "  <TD width='60' VALIGN='TOP' COLSPAN=2 HEIGHT=6>   "+
+   "  &nbsp;<font size='2'><B>"+mod+"</B></font></TD>   "+
+   "  <TD width='95' VALIGN='TOP'   COLSPAN=2 HEIGHT=6>   "+
+   "  &nbsp;<font size='2'><B>"+tipo_despa+"</B></font></TD>   "+
+   "  <TD width='121' VALIGN='TOP' COLSPAN=2 HEIGHT=6>&nbsp;"+ordemb+"</TD></TR>   "+
+   "  <TR><TD width='8' VALIGN='middle' HEIGHT=1 rowspan='2' bgcolor='#006699'>   "+
+   "  <P ALIGN='CENTER'><B><FONT SIZE=2 color=#ffffff>1</FONT></B></TD>   "+
+   "  <TD width='115' VALIGN='middle' align=left HEIGHT=1 rowspan='2' bgcolor='#006699'>   "+
+   "  <B><FONT SIZE=2 color=#ffffff>IDENTIFICACION</FONT></B></TD>   "+
+   "  <TD width='402' VALIGN='TOP' COLSPAN=8 HEIGHT=1>   "+
+   "  <font face='verdana,arial' color='#000080' size=1>1.1 Importador/Exportador</FONT></TD></TR>   "+
+   "  <TR><TD width='402' VALIGN='TOP' COLSPAN=8   HEIGHT=1>   "+
+   "  &nbsp;<font size='2'><B>"+nomimport+"</B></font></TD>   "+
+   "  </TR></TABLE>   "+
+   "  <TABLE BORDER='1' cellspacing=1 BORDERCOLOR='#000000' CELLPADDING=4 width=756 height='26'>   "+
+   "  <TR><TD width='302' VALIGN='TOP' colspan=5 HEIGHT=18>   "+
+   "  <font face='verdana,arial' color='#000080' size=1>1.2 Código y Documento de Identificación</FONT></TD>   "+
+   "  <TD width='323' VALIGN='TOP' COLSPAN=7 HEIGHT=18>   "+
+   "  <font face='verdana,arial' color='#000080' size=1><P>1.3 Dirección de Importador/Exportador</FONT></TD>   "+
+   "  <TD width='91' VALIGN='TOP' HEIGHT=18>   "+
+   "  <font face='verdana,arial' color='#000080' size=1><P>1.4 Cod.Ubi.Geo.</FONT></TD></TR>   "+
+   "  <TR><TD width='302' VALIGN='TOP' colspan=5 HEIGHT=1>   "+
+   "  <font size='2'><B>"+tip_docu+" - "+num_docu+"</B></font></TD>   "+
+   "  <TD width='323' VALIGN='TOP' COLSPAN=7 HEIGHT=1>   "+
+   "  <font size='2'><B>"+direcc+"</B></font></TD>   "+
+   "  <TD width='91' VALIGN='TOP' HEIGHT=1>   "+
+   "  <font size='2'><B>&nbsp; "+ubigeo+"</B></font></TD></TR></TABLE>   "+
+   "  <TABLE BORDER='1' CELLSPACING=1 BORDERCOLOR='#000000' CELLPADDING=4 width=756 height='17'>   "+
+   "  <TR><TD width='8' VALIGN='middle' align=left rowspan=2 HEIGHT=14 bgcolor='#006699'>   "+
+   "  <B><FONT SIZE=2 color=#ffffff>3</B></FONT></TD>   "+
+   "  <TD width='119' VALIGN='middle' align=left rowspan=2 HEIGHT=14 bgcolor='#006699'>   "+
+   "  <b><font size='2' color=#ffffff>TRANSPORTE</font></b></TD>   "+
+   "  <TD width='297' VALIGN='TOP' HEIGHT=1>   "+
+   "  <font face='verdana,arial' color='#000080' size=1><P>3.1 Empresa Transporte&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   "+
+   "  Código</FONT></TD>   "+
+   "  <TD width='124' VALIGN='TOP' HEIGHT=1><font face='verdana,arial' color='#000080' size=1>3.2 Nº Manifiesto</FONT></TD>   "+
+   "  <TD width='176' VALIGN='TOP' HEIGHT=1><font face='verdana,arial' color='#000080' size=1>3.3 Vía Transporte&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   "+
+   "  Código</FONT></TD></TR>   "+
+   "  <TR><TD width='297' VALIGN='TOP' HEIGHT=11   >   "+
+   "  <font size='2'><B>"+nombtransp+" - "+numtransp+"</B></font></TD>   "+
+   "  <TD width='124' VALIGN='TOP'   HEIGHT=11>   "+
+   "  <font size='2'><B>"+anomanif+" - "+nummanif+"</B></font></TD>   "+
+   "  <TD width='176' VALIGN='TOP'   HEIGHT=11>   "+
+   "  <font size='2'><B>"+viatrans+" - "+tipviatrans+"</B></font></TD></TR></TABLE>   "+
+   "  <TABLE BORDER='1' CELLSPACING=1 BORDERCOLOR='#000000' CELLPADDING=4 width=756 height='24'>   "+
+   "  <TR><TD width='180' VALIGN='TOP' COLSPAN=4 HEIGHT=23>   "+
+   "  <P><font face='verdana,arial' color='#000080' size=1>3.4 Fecha Termino Desc/Embar</FONT></TD>   "+
+   "  <TD width='219' VALIGN='TOP' COLSPAN=4 HEIGHT=23><font face='verdana,arial' color='#000080' size=1>3.5 Empresa   "+
+   "  Transporte (T/R)&nbsp; Código&nbsp;</FONT></TD>   "+
+   "  <TD width='171' VALIGN='TOP' COLSPAN=2 HEIGHT=23><font face='verdana,arial' color='#000080' size=1>3.6 Unidad Transporte (T/R)&nbsp;</FONT></TD>   "+
+   "  <TD width='178' VALIGN='TOP' COLSPAN=3 HEIGHT=23><font face='verdana,arial' color='#000080' size=1>3.7 Aduana D/S&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   "+
+   "  Código</FONT></TD></TR>   "+
+   "  <TR><TD width='180' VALIGN='TOP' COLSPAN=4    HEIGHT=13>   "+
+   "  <font size='2'><B>"+fecemb+"</B></font></TD>   "+
+   "  <TD width='219' VALIGN='TOP' COLSPAN=4 HEIGHT=13>&nbsp;"+emptranstr+" - "+codemptranstr+"</TD>   "+
+   "  <TD width='171' VALIGN='TOP' COLSPAN=2 HEIGHT=13>&nbsp;"+unidtrans+"</TD>   "+
+   "  <TD width='178' VALIGN='TOP' COLSPAN=3 HEIGHT=13>&nbsp;"+aduanasalr+"</TD></TR></TABLE>   "+
+   "  <TABLE BORDER='1' CELLSPACING=1 BORDERCOLOR='#000000' CELLPADDING=4 width=756 height='1'>   "+
+   "  <TR><TD width='5' VALIGN='middle' align=left HEIGHT=1 rowspan='2' bgcolor='#006699'>   "+
+   "  <B><FONT SIZE=2 color=#ffffff>4</B></FONT></TD>   "+
+   "  <TD width='101' VALIGN='middle' align=left HEIGHT=1 rowspan='2' bgcolor='#006699'>   "+
+   "  <b><font size='2' color=#ffffff>ALMACEN</font></b></TD>   "+
+   "  <TD width='208' VALIGN='TOP' HEIGHT=1><font face='verdana,arial' color='#000080' size=1><P align='left'>4.1 Terminal   "+
+   "  Almacenamiento&nbsp;&nbsp;Código</FONT></TD>   "+
+   "  <TD width='188' VALIGN='TOP' HEIGHT=1><font face='verdana,arial' color='#000080' size=1><P>4.2 Depósito A.Autorizado&nbsp;Código</FONT></TD>   "+
+   "  <TD width='117' VALIGN='TOP' HEIGHT=1><font face='verdana,arial' color='#000080' size=1><P>4.3 Plazo Solicitado</FONT></TD>   "+
+   "  </TR><TR><TD width='208' VALIGN='TOP' HEIGHT=15  >   "+
+   "  <font size='2'><B>"+terminal+" - "+codi_alma+"</B></font></TD>   "+
+   "  <TD width='188' VALIGN='TOP' HEIGHT=15><font size='2'>&nbsp;</font></TD>   "+
+   "  <TD width='117' VALIGN='TOP' HEIGHT=15>&nbsp;</TD></TR></TABLE>   "+
+   "  <TABLE BORDER='1' CELLSPACING=1 BORDERCOLOR='#000000' CELLPADDING=4 width=756 height='1'>   "+
+   "  <TR><TD width='8' VALIGN='middle' align=left HEIGHT=1 rowspan='2' bgcolor='#006699'>   "+
+   "  <B><FONT SIZE=2 color=#ffffff>5</FONT></B></TD>   "+
+   "  <TD width='121' VALIGN='middle' align=left HEIGHT=1 rowspan='2' bgcolor='#006699'>   "+
+   "  <b><font size='2' color=#ffffff>TRANSACCION</font></b></TD>   "+
+   "  <TD width='389' VALIGN='TOP' HEIGHT=1><font face='verdana,arial' color='#000080' size=1><P align='left'>5.1 Entidad   "+
+   "  Financiera&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   "+
+   "  Código</FONT></TD>   "+
+   "  <TD width='254' VALIGN='TOP' HEIGHT=1><font face='verdana,arial' color='#000080' size=1><P align='left'>5.2   "+
+   "  Modalidad&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   "+
+   "  Código</FONT></TD></TR>   "+
+   "  <TR><TD width='389' VALIGN='TOP'   HEIGHT=7><font face='verdana,arial' color='#000080' size=1>&nbsp; "+cenfin+" </font></TD>   "+
+   "  <TD width='254' VALIGN='TOP'   HEIGHT=7>&nbsp; <font face='verdana,arial' color='#000080' size=1>"+fpagox+" </TD></TR>   "+
+   "  </TABLE>   "+
+   "  <TABLE BORDER='1' CELLSPACING=1 BORDERCOLOR='#000000' CELLPADDING=4 width=756 height='52'>   "+
+   "  <TR><TD width='8' VALIGN='middle' align=left HEIGHT=15 rowspan='2' bgcolor='#006699'>   "+
+   "  <B><FONT SIZE=2 color=#ffffff>6</FONT></B></TD>   "+
+   "  <TD width='137' VALIGN='middle' align=left HEIGHT=15 rowspan='2' bgcolor='#006699'>   "+
+   "  <b><font size='2' color=#ffffff>VALOR ADUANA</font></b></TD>   "+
+   "  <TD width='149' VALIGN='TOP' HEIGHT=8><font face='verdana,arial' color='#000080' size=1>6.1 FOB/Valor Clausula venta</FONT></TD>   "+
+   "  <TD width='123' VALIGN='TOP' HEIGHT=8><font face='verdana,arial' color='#000080' size=1>6.2 Flete/Comisión Exterior</FONT></TD>   "+
+   "  <TD width='119' VALIGN='TOP' HEIGHT=8><font face='verdana,arial' color='#000080' size=1>6.3 Seguro/Otros Gastos Deducibles</FONT></TD>   "+
+   "  <TD width='109' VALIGN='TOP' HEIGHT=8><font face='verdana,arial' color='#000080' size=1>6.4 Total Ajustes</FONT></TD>   "+
+   "  <TD width='127' VALIGN='TOP' HEIGHT=8><font face='verdana,arial' color='#000080' size=1>6.5 Valor Aduana/ Valor Neto Entrega</font></TD>   "+
+   "  </TR><TR><TD width='149'   VALIGN='TOP' HEIGHT=7>   "+
+   "  <font size=2>&nbsp;"+tfob_dolpo+"</font><TD width='123' VALIGN='TOP'   HEIGHT=7>   "+
+   "  <font size=2>&nbsp;"+tfle_dolar +"</font><TD width='119' VALIGN='TOP'   HEIGHT=7>   "+
+   "  <font size=2>"+totunidfisi +"</font><TD width='109' VALIGN='TOP' HEIGHT=7>   "+
+   "  <font size=2>"+ltotajuste +" </font><TD width='127' VALIGN='TOP' HEIGHT=7>   "+
+   "  <font size='2'><B>"+valoraduana+"</B></font></TD></TR></table>   "+
+   "  <TABLE BORDER='1' CELLSPACING=1 BORDERCOLOR='#000000' CELLPADDING=4 width=756 height='52'>   "+
+   "  <TR><TD width='154' VALIGN='middle' align=left HEIGHT=15 rowspan='2' bgcolor='#006699'>   "+
+   "  <b><font size='2' color=#ffffff>OTROS DATOS DILIGENCIA</font></b></TD>   "+
+   "  <TD width='149' VALIGN='TOP' HEIGHT=8><font face='verdana,arial' color='#000080' size=1>Total Peso Neto</FONT></TD>   "+
+   "  <TD width='126' VALIGN='TOP' HEIGHT=8><font face='verdana,arial' color='#000080' size=1>Total Peso Bruto</font></TD>   "+
+   "  <TD width='121' VALIGN='TOP' HEIGHT=8><font face='verdana,arial' color='#000080' size=1>Total Bultos</font></TD>   "+
+   "  <TD width='97'  VALIGN='TOP' HEIGHT=8><font face='verdana,arial' color='#000080' size=1>Total U.Físicas</font></TD>   "+
+   "  <TD width='118' VALIGN='TOP' HEIGHT=8><font face='verdana,arial' color='#000080' size=1>Total U.Comercial.</font></TD>   "+
+   "  </TR><TR><TD width='149' VALIGN='TOP'   HEIGHT=7><font size='2'>170.4</font>   "+
+   "  <TD width='126' VALIGN='TOP'   HEIGHT=7><font size='2'>372.4</font><TD width='121' VALIGN='TOP'   HEIGHT=7>   "+
+   "  <font size='2'>20.0</font><TD width='97' VALIGN='TOP'   HEIGHT=7><font size='2'>180.0</font>   "+
+   "  <TD width='118'   VALIGN='TOP' HEIGHT=7><font size='2'>20.0</font></TR></table>   ";
+
+
+}
+
+function Serie(nomadu,aduana , orden , dest , mod , tipo_despa, ordemb , nomimport,
+	 tip_docu , num_docu  , direcc , nume_corre, fecingsi , canal , ubigeo, nume_serie ,
+	 mcaduregpre,mfanoregpre,mcodiregpre,mndclregpre,mnserregpre , codultra , puer_embar,
+	 fech_embar , cono_embar , cert_orige , qunicom , numeidv,cexoidv ,cant_bulto ,
+	 clase , peso_neto , peso_bruto , unid_fiqty , unid_fides , part_nandi , tnan, part_nalad ,
+	 part_naban , tipo_marge , conv_inter , trat_prefe , codi_liber , pais_orige , pais_adqui , 
+	 fob_divfac , codi_moned , fob_dolpol , fle_dolar , seg_dolar , majuste , mvalorcif , 
+	 mdesc_comer , mdesc_fopre , mdesc_matco , mdesc_usoap , mdesc_otros , mnfact1 , 
+	 mffact1 , mnfact2 , mffact2 , mnfact3 , mffact3) {
+
+   return " <TABLE BORDER='1' CELLSPACING=1 BORDERCOLOR='#000000' CELLPADDING=4 width=756 height='52'>          "+
+   " <TR><TD VALIGN='TOP' COLSPAN=3 width='139' height='9'>          "+
+   " <P><font face='verdana,arial' size='1' color='#000080'>Aduana</font></TD>          "+
+   " <TD VALIGN='TOP' width='46' height='9'><font face='verdana,arial' size='1' color='#000080'>Código</font></TD>          "+
+   " <TD VALIGN='TOP' COLSPAN=6 rowspan='2' width='339' height='40'>          "+
+   " <P align='center'><B><FONT SIZE=3 >DECLARACION UNICA DE ADUANAS&nbsp; (A1)</FONT></B></TD>          "+
+   " <TD VALIGN='middle' width='11' rowspan='2' height='40' bgcolor='#006699'>          "+
+   " <b><font size='2' color='#ffffff'>2</font></b></TD>          "+
+   " <TD VALIGN='middle' width='157' rowspan='2' height='40' colspan='3' bgcolor='#006699'>          "+
+   " <b><font color='#ffffff' size='2'>REGISTRO DE ADUANA</font></b></TD></TR>          "+
+   " <TR><TD VALIGN='TOP' COLSPAN=3 width='139' height='19'>          "+
+   " <font size='2'><B>"+nomadu+"</B></font></TD><TD VALIGN='TOP' width='46' height='19'>          "+
+   " <font size='2'><B>"+aduana+"</B></font></TD></TR></TABLE>          "+
+   " <TABLE BORDER='1' CELLSPACING=1 BORDERCOLOR='#000000' CELLPADDING=4 width=756 height='1'>          "+
+   " <TR><TD width='135' VALIGN='TOP' COLSPAN=2 HEIGHT=1>          "+
+   " <P ALIGN='left'><font face='verdana,arial' size='1' color='#000080'>Nº Orden</font></TD>          "+
+   " <TD width='90' VALIGN='TOP' COLSPAN=2 HEIGHT=1><font face='verdana,arial' size='1' color='#000080'>Destinación</font></TD>          "+
+   " <TD width='60' VALIGN='TOP' COLSPAN=2 HEIGHT=1><font face='verdana,arial' size='1' color='#000080'>Modalidad</font></TD>          "+
+   " <TD width='95' VALIGN='TOP' COLSPAN=2 HEIGHT=1><font face='verdana,arial' size='1' color='#000080'>Tipo Despacho</font></TD>          "+
+   " <TD width='121' VALIGN='TOP' COLSPAN=2 HEIGHT=1><font face='verdana,arial' size='1' color='#000080'>Nº Orden de Embarque</font></TD>          "+
+   " <TD width='179' VALIGN='middle' colspan=3 HEIGHT=1 rowspan='4'>          "+
+   " <B><FONT SIZE=2><P>Nº Declaración: "+nume_corre+"</P>          "+
+   " <P>Fecha Numeración: </font><font size=2></font><font face='verdana,arial' size=2>"+ fecingsi +"</P>          "+
+   " <P>Sujeto a:&nbsp;</font><font color='#FF9900' size=-2></font>"+canal+
+   " </P><P>&nbsp;</P></font></b></TD></TR>          "+
+   " <TR><TD width='135' VALIGN='TOP' COLSPAN=2 HEIGHT=6>&nbsp;<font size='2'><B>"+orden+"</B></font></TD>          "+
+   " <TD width='90' VALIGN='TOP' COLSPAN=2 HEIGHT=6>&nbsp;<font size='2'><B>"+dest +"</B></font></TD>          "+
+   " <TD width='60' VALIGN='TOP' COLSPAN=2 HEIGHT=6>&nbsp;<font size='2'><B>"+mod+"</B></font></TD>          "+
+   " <TD width='95' VALIGN='TOP' COLSPAN=2 HEIGHT=6>&nbsp;<font size='2'><B>"+tipo_despa+"</B></font></TD>          "+
+   " <TD width='121' VALIGN='TOP' COLSPAN=2 HEIGHT=6>&nbsp;"+ordemb+"</TD></TR>          "+
+   " <TR><TD width='8' VALIGN='middle' HEIGHT=1 rowspan='2' bgcolor='#006699'>          "+
+   " <P ALIGN='CENTER'><B><FONT color='#ffffff' SIZE=2 >1</FONT></B></TD>          "+
+   " <TD width='115' VALIGN='middle' HEIGHT=1 rowspan='2' bgcolor='#006699'>          "+
+   " <B><FONT color='#ffffff' SIZE=2><P ALIGN='left'>IDENTIFICACION</FONT></B></TD>          "+
+   " <TD width='402' VALIGN='TOP' COLSPAN=8 HEIGHT=1><font face='verdana,arial' size='1' color='#000080'>          "+
+   " 1.1 Importador/Exportador</FONT></TD></TR>          "+
+   " <TR><TD width='402' VALIGN='TOP' COLSPAN=8 HEIGHT=1>          "+
+   " &nbsp;<font size='2'><B>"+nomimport+"</B></font></TD></TR></TABLE>          "+
+   " <TABLE BORDER='1' cellspacing=1 BORDERCOLOR='#000000' CELLPADDING=4 width=756 height='26'>          "+
+   " <TR><TD width='302' VALIGN='TOP' colspan=5 HEIGHT=18><font face='verdana,arial' size='1'          "+
+   " color='#000080'>1.2 Código y Documento de Identificación</FONT></TD>          "+
+   " <TD width='323' VALIGN='TOP' COLSPAN=7 HEIGHT=18><font face='verdana,arial' size='1'           "+
+   " color='#000080'><P>1.3 Dirección de Importador/Exportador</FONT></TD>          "+
+   " <TD width='91' VALIGN='TOP' HEIGHT=18><font face='verdana,arial' size='1' color='#000080'>          "+
+   " <P>1.4 Cod.Ubi.Geo.</FONT></TD></TR><TR><TD width='302' VALIGN='TOP' colspan=5 HEIGHT=1>          "+
+   " <font size='2'><B>"+tip_docu +" - "+ num_docu  +"</B></font></TD><TD width='323' VALIGN='TOP' COLSPAN=7 HEIGHT=1>          "+
+   " <font size='2'><B>"+direcc+"</B></font></TD>          "+
+   " <TD width='91' VALIGN='TOP' HEIGHT=1><font size='2'><B>&nbsp;"+ubigeo+"</B></font></TD></TR></TABLE>          "+
+   " <TABLE BORDER='1' CELLSPACING=1 BORDERCOLOR='#000000' CELLPADDING=4 width=756 height='52'>          "+
+   " <TR><TD width='8' VALIGN='middle' HEIGHT=15 rowspan='2' bgcolor='#006699'>          "+
+   " <B><FONT color='#ffffff' SIZE=2><P>7</FONT></B></TD>          "+
+   " <TD width='123' VALIGN='middle' HEIGHT=15 rowspan='2' bgcolor='#006699'>          "+
+   " <b><font color='#ffffff' size='2'>DECLARACION DE MERCANCIAS</font></b></TD>          "+
+   " <TD width='103' VALIGN='TOP' HEIGHT=8><font face='verdana,arial' size='1' color='#000080'>          "+
+   " 7.1 Nº Serie/Total</FONT></TD>          "+
+   " <TD width='171' VALIGN='TOP' HEIGHT=8><font face='verdana,arial' size='1' color='#000080'>          "+
+   " 7.2 Items Ejemplar B</FONT>  </TD>          "+
+   " <TD width='150' VALIGN='TOP' HEIGHT=8><font face='verdana,arial' size='1' color='#000080'>          "+
+   " 7.3 Número Declaración          "+
+   " Precedente&nbsp;&nbsp;&nbsp; Serie</FONT></TD>          "+
+   " <TD width='117' VALIGN='TOP' HEIGHT=8><font face='verdana,arial' size='1' color='#000080'>          "+
+   " 7.4 Nº Certificado Reposición Item&nbsp;</FONT></TD>          "+
+   " <TD width='100' VALIGN='TOP' HEIGHT=8><font face='verdana,arial' size='1' color='#000080'>          "+
+   " 7.5 Cod.Apl.Ultr.</font></TD></TR>          "+
+   " <TR><TD width='104' VALIGN='TOP' HEIGHT=7><font size='2'><B>"+nume_serie+"</B></font></TD>          "+
+   " <TD width='171' VALIGN='TOP' HEIGHT=7><font size='2'><B>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;          "+
+   " |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;          "+
+   " |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</B></font></TD><TD width='150' VALIGN='TOP' HEIGHT=7>          "+
+   " <font size='2'><B>"+mcaduregpre+"-"+mfanoregpre+"-"+mcodiregpre+"-"+mndclregpre+"-"+mnserregpre+"</B></font></TD><TD width='117' VALIGN='TOP' HEIGHT=7>          "+
+   " <font face='verdana,arial' size='1' color='#000080'>&nbsp;</font></TD>          "+
+   " <TD width='100' VALIGN='TOP' HEIGHT=7><font size='2'><B>"+codultra+"</B></font></TD></TR></table>          "+
+   " <TABLE BORDER='1' CELLSPACING=1 BORDERCOLOR='#000000' CELLPADDING=4 width=756 height='52'>          "+
+   " <TR><TD width='156' VALIGN='middle' HEIGHT=8 bgcolor='#FFFFFF'><font face='verdana,arial' size='1' color='#000080'>7.6 Puerto de Embarque Código</FONT></TD>          "+
+   " <TD width='106' VALIGN='TOP' HEIGHT=8><font face='verdana,arial' size='1' color='#000080'>          "+
+   " 7.7 Fecha Emb.</FONT></TD>          "+
+   " <TD width='113' VALIGN='TOP' HEIGHT=8><font face='verdana,arial' size='1' color='#000080'>          "+
+   " 7.8 Documento Transporte Detalle</font></TD>          "+
+   " <TD width='152' VALIGN='TOP' HEIGHT=8><font face='verdana,arial' size='1' color='#000080'>          "+
+   " 7.9 Nº Certificado Origen Fecha</font></TD>          "+
+   " <TD width='105' VALIGN='TOP' HEIGHT=8><font face='verdana,arial' size='1' color='#000080'>          "+
+   " 7.10 Cant. Unidad Comercial&nbsp;</font></TD>          "+
+   " <TD width='133' VALIGN='TOP' HEIGHT=8><font face='verdana,arial' size='1' color='#000080'>          "+
+   " 7.11 Infor. Verificación / Cod.Exoneración</font></TD></TR><TR><TD width='156' VALIGN='TOP'    HEIGHT=7>          "+
+   " <font size='2'><B>"+puer_embar+"</B></font></TD><TD width='106' VALIGN='TOP'   HEIGHT=7>          "+
+   " <font size='2'><B>"+fech_embar+"</B></font></TD><TD width='113' VALIGN='TOP'   HEIGHT=7>          "+
+   " <font size='2'><B>"+cono_embar +"</B></font></TD><TD width='152' VALIGN='TOP'   HEIGHT=7>          "+
+   " <font size='2'><B>&nbsp"+cert_orige +"</B></font></TD><TD width='105' VALIGN='TOP'   HEIGHT=7>          "+
+   " <font size='2'><B>"+qunicom +"</font><TD width='133' VALIGN='TOP' HEIGHT=7>          "+
+   " <font size='2'><B>&nbsp;"+numeidv+"/"+cexoidv+" </B></font></TD></TR></table>          "+
+   " <TABLE BORDER='1' CELLSPACING=1 BORDERCOLOR='#000000' CELLPADDING=4 width=756 height='52'>          "+
+   " <TR><TD width='103' VALIGN='top' HEIGHT=8 bgcolor='#FFFFFF'>          "+
+   " <font face='verdana,arial' size='1' color='#000080'>7.12 Cantidad Bultos</FONT></TD>          "+
+   " <TD width='92' VALIGN='TOP' HEIGHT=8><font face='verdana,arial' size='1' color='#000080'>          "+
+   " 7.13. Clase</font></TD>          "+
+   " <TD width='97' VALIGN='TOP' HEIGHT=8><font face='verdana,arial' size='1' color='#000080'>          "+
+   " 7.14 Peso Neto Kilos</font></TD>          "+
+   " <TD width='106' VALIGN='TOP' HEIGHT=8><font face='verdana,arial' size='1' color='#000080'>          "+
+   " 7.15 Peso Bruto Kilos</font></TD>          "+
+   " <TD width='150' VALIGN='TOP' HEIGHT=8><font face='verdana,arial' size='1' color='#000080'>          "+
+   " 7.16 Cantidad Unidad          "+
+   " Física&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;          "+
+   " Unidad</font></TD>          "+
+   " <TD width='149' VALIGN='TOP' HEIGHT=8><font face='verdana,arial' size='1' color='#000080'>          "+
+   " 7.17 Cantidad Unidad Equiv./Prod.&nbsp;&nbsp;Unidad</font></TD>          "+
+   " <TD width='68' VALIGN='TOP' HEIGHT=8><font face='verdana,arial' size='1' color='#000080'>          "+
+   " 7.18 Item CIP</font></TD></TR><TR><TD width='103' VALIGN='TOP'   HEIGHT=7>          "+
+   " <font size='2'><B>"+cant_bulto+"</font><TD width='92' VALIGN='TOP'   HEIGHT=7><font size='2'><B>"+clase+"</font>          "+
+   " <TD width='97' VALIGN='TOP'   HEIGHT=7><font size='2'><B>"+peso_neto +"</font>          "+
+   " <TD width='106' VALIGN='TOP'   HEIGHT=7>          "+
+   " <font size='2'><B>"+peso_bruto +"</font><TD width='150' VALIGN='TOP'   HEIGHT=7>          "+
+   " <font size='2'><B>"+ unid_fiqty +" - "+ unid_fides+"  </font><TD width='149' VALIGN='TOP'  HEIGHT=7>          "+
+   " <font size='2'><B>&nbsp</B></font></TD><TD width='68' VALIGN='TOP' HEIGHT=7>          "+
+   " <font size='2'><B>&nbsp</B></font></TD></TR></table>          "+
+   " <TABLE BORDER='1' CELLSPACING=1 BORDERCOLOR='#000000' CELLPADDING=4 width=756 height='52'>          "+
+   " <TR><TD width='101' VALIGN='top' HEIGHT=8 bgcolor='#FFFFFF'><font face='verdana,arial' size='1'          "+
+   " color='#000080'>7.19 Subpartida Nacional DV&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></TD>          "+
+   " <TD width='57' VALIGN='TOP' HEIGHT=8><font face='verdana,arial' size='1' color='#000080'>          "+
+   " 7.20 Tipo</font></TD><TD width='145' VALIGN='TOP' HEIGHT=8><font face='verdana,arial' size='1'           "+
+   " color='#000080'>7.21 Subpartida Naladisa/Nabandina DV</font></TD>          "+
+   " <TD width='63' VALIGN='TOP' HEIGHT=8><font face='verdana,arial' size='1' color='#000080'>          "+
+   " 7.22 TM</font></TD><TD width='48' VALIGN='TOP' HEIGHT=8><font face='verdana,arial' size='1'           "+
+   " color='#000080'>7.23 TPI</font></TD>          "+
+   " <TD width='63' VALIGN='TOP' HEIGHT=8><font face='verdana,arial' size='1' color='#000080'>          "+
+   " &nbsp;7.24 TPN</font></TD>          "+
+   " <TD width='72' VALIGN='TOP' HEIGHT=8><font face='verdana,arial' size='1' color='#000080'>          "+
+   " 7.25 Cod. Lib.</font></TD>          "+
+   " <TD width='83' VALIGN='TOP' HEIGHT=8><font face='verdana,arial' size='1' color='#000080'>          "+
+   " 7.26 País Origen</font></TD>          "+
+   " <TD width='61' VALIGN='TOP' HEIGHT=8><font face='verdana,arial' size='1' color='#000080'>          "+
+   " 7.27 País Adq/Dest.</font></TD>          "+
+   " <TD width='72' VALIGN='TOP' HEIGHT=8><font face='verdana,arial' size='1' color='#000080'>          "+
+   " 7.28 Reg. Apli.</font></TD></TR><TR><TD width='101' VALIGN='TOP'   HEIGHT=7>          "+
+   " <font size='2'><B>"+part_nandi+"</font><TD width='57' VALIGN='TOP'   HEIGHT=7>          "+
+   " <font size='2'><B>"+tnan+"  </B></font></TD><TD width='145' VALIGN='TOP'   HEIGHT=7>          "+
+   " <font size='2'><B>"+part_nalad +"  /"+part_naban +"  </font><TD width='63' VALIGN='TOP'   HEIGHT=7>          "+
+   " <font size='2'><B>"+tipo_marge +"</B></font></TD><TD width='48' VALIGN='TOP' HEIGHT=7>"+
+   " <font size='2'><B>"+conv_inter +"</B></font></TD><TD width='63' VALIGN='TOP'   HEIGHT=7>"+
+   " <font size='2'><B>"+trat_prefe +"</B></font></TD><TD width='72' VALIGN='TOP'   HEIGHT=7>"+
+   " <font size='2'><B>"+codi_liber +"</B></font></TD><TD width='83' VALIGN='TOP'   HEIGHT=7>"+
+   " <font size='2'><B>"+pais_orige +"</font><TD width='61' VALIGN='TOP'   HEIGHT=7>"+
+   " <font size='2'><B>"+pais_adqui +"</font><TD width='72' VALIGN='TOP' HEIGHT=7>"+
+   " <font size='2'><B>&nbsp</B></font></TD></TR></table>          "+
+   " <TABLE BORDER='1' CELLSPACING=1 BORDERCOLOR='#000000' CELLPADDING=4 width=756 height='52'>          "+
+   " <TR><TD width='187' VALIGN='middle' HEIGHT=8 bgcolor='#FFFFFF'><font face='verdana,arial'          "+
+   " size='1' color='#000080'>7.29 FOB Moneda Transacción Código</FONT></TD>          "+
+   " <TD width='102' VALIGN='TOP' HEIGHT=8><font face='verdana,arial' size='1' color='#000080'>          "+
+   " 7.30 FOB US$</font></TD><TD width='91' VALIGN='TOP' HEIGHT=8><font face='verdana,arial'           "+
+   " size='1' color='#000080'>7.31 Flete US$</font></TD>          "+
+   " <TD width='101' VALIGN='TOP' HEIGHT=8><font face='verdana,arial' size='1' color='#000080'>          "+
+   " 7.32 Seguro US$</font></TD>          "+
+   " <TD width='135' VALIGN='TOP' HEIGHT=8><font face='verdana,arial' size='1' color='#000080'>          "+
+   " 7.33 Ajuste Valor US$</font></TD>          "+
+   " <TD width='149' VALIGN='TOP' HEIGHT=8><font face='verdana,arial' size='1' color='#000080'>          "+
+   " 7.34 Valor Aduana US$</font></TD></TR>"+
+   " <TR><TD width='187' VALIGN='TOP' HEIGHT=7>          "+
+   " <font size='2'><B>"+fob_divfac +"</font><font size='2'><B> - </B>"+codi_moned +"</font></TD>          "+
+   " <TD width='102' VALIGN='TOP' HEIGHT=7><font size='2'><B>"+ fob_dolpol +"</B></font></TD>          "+
+   " <TD width='91' VALIGN='TOP' HEIGHT=7><font size='2'><B>"+ fle_dolar +"</B></font></TD>          "+
+   " <TD width='101' VALIGN='TOP' HEIGHT=7><font size='2'><B>"+ seg_dolar +"</B></font></TD>          "+
+   " <TD width='135' VALIGN='TOP' HEIGHT=7><font size='2'><B>"+ majuste +"</B></font></TD>          "+
+   " <TD width='149' VALIGN='TOP' HEIGHT=7><font size='2'><B>"+ mvalorcif+"</B></font></TD></TR></table> "+
+     " <TABLE BORDER='1' CELLSPACING=1 BORDERCOLOR='#000000' CELLPADDING=4 width=756 height='52'>          "+
+   " <TR><TD width='98' VALIGN='middle' HEIGHT=15 bgcolor='#FFFFFF' rowspan='5'>          "+
+   " <font face='verdana,arial' size='1' color='#000080'>7.35 Descripción Mercancías</FONT></TD>          "+
+   " <TD width='667' VALIGN='TOP'   HEIGHT=3><font face='verdana,arial' size='1' color='#000080'>1.</font>          "+
+   " <font size='2'><B>"+mdesc_comer +"</font> </TR>          "+
+   " <TR><TD width='667' VALIGN='TOP'   HEIGHT=3><font face='verdana,arial' size='1' color='#000080'>          "+
+   " 2. </font><font size='2'><B>"+mdesc_fopre +"</font></TR><TR>          "+
+   " <TD width='667' VALIGN='TOP'   HEIGHT=3><font face='verdana,arial' size='1' color='#000080'>3.</font>          "+
+   " <font size='2'><B>"+mdesc_matco +"</font></TR><TR>          "+
+   " <TD width='667' VALIGN='TOP'   HEIGHT=3><font face='verdana,arial' size='1' color='#000080'>4.</font>          "+
+   " <font size='2'><B>"+mdesc_usoap +"</font></TR><TR>          "+
+   " <TD width='667' VALIGN='TOP'   HEIGHT=3><font face='verdana,arial' size='1' color='#000080'>5.</font>          "+
+   " <font size='2'><B>"+mdesc_otros +"</font></TR></table>          "+
+   " <TABLE BORDER='1' CELLSPACING=1 BORDERCOLOR='#000000' CELLPADDING=4 width=756 height='55'>          "+
+   " <TR><TD width='253' VALIGN='top' HEIGHT=8 bgcolor='#FFFFFF'><font face='verdana,arial'           "+
+   " size='1' color='#000080'>7.36 Factura          "+
+   " Comercial&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;          "+
+   " &nbsp;Fecha</FONT></TD><TD width='263' VALIGN='TOP' HEIGHT=8><font face='verdana,arial' size='1'          "+
+   " color='#000080'>Nº&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;          "+
+   " &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;          "+
+   " &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;          "+
+   " &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fecha</font></TD>          "+
+   " <TD width='249' VALIGN='TOP' HEIGHT=8><font face='verdana,arial' size='1' color='#000080'>          "+
+   " Nº&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;          "+
+   " &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;          "+
+   " &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;          "+
+   " &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;          "+
+   " Fecha</font></TD></TR><TR><TD width='253' VALIGN='TOP' HEIGHT=10>          "+
+   " <font size='2'><b>"+mnfact1 +" - "+mffact1+"</b></font></TD>          "+
+   " <TD width='263' VALIGN='TOP' HEIGHT=10><font size='2'><b> "+mnfact2 +" - "+ mffact2 +"  </b></font></TD>          "+
+   " <TD width='249' VALIGN='TOP' HEIGHT=10><font size='2'><b> "+ mnfact3 +" - "+ mffact3+" </b></font></TD></TR></table>          "+
+   " <TABLE BORDER='1' CELLSPACING=1 BORDERCOLOR='#000000' CELLPADDING=4 width=756 height='1'>          "+
+   " <TR><TD width='246' VALIGN='top' HEIGHT=1 bgcolor='#FFFFFF' rowspan='4'>          "+
+   " <font face='verdana,arial' size='1' color='#000080'>7.37 Información Complementaria</FONT>          "+
+   " <p>&nbsp;</p></TD><TD width='115' VALIGN='TOP' HEIGHT=1 colspan='3'>          "+
+   " <font face='verdana,arial' size='1' color='#000080'>7.38 Observaciones</font></TD>          "+
+   " <TD width='404' VALIGN='TOP' HEIGHT=1 rowspan='4'><font face='verdana,arial'           "+
+   " size='1' color='#000080'>&nbsp;</font></TD></TR>          "+
+   " <TR><TD width='115' VALIGN='TOP' HEIGHT=0 colspan='3'><font face='verdana,arial' size='1'           "+
+   " color='#000080'>7.39 Tipo Obervación</font></TD></TR>          "+
+   " <TR><TD width='40' VALIGN='TOP' HEIGHT=4><font face='verdana,arial' size='1'           "+
+   " color='#000080'>&nbsp;</font></TD>          "+
+   " <TD width='38' VALIGN='TOP' HEIGHT=4><font face='verdana,arial' size='1'           "+
+   " color='#000080'>&nbsp;</font></TD>          "+
+   " <TD width='37' VALIGN='TOP' HEIGHT=4><font face='verdana,arial' size='1'           "+
+   " color='#000080'>&nbsp;</font></TD></TR>          "+
+   " <TR><TD width='40' VALIGN='TOP' HEIGHT=3><font face='verdana,arial' size='1'           "+
+   " color='#000080'>&nbsp;</font></TD>          "+
+   " <TD width='38' VALIGN='TOP' HEIGHT=3><font face='verdana,arial' size='1'           "+
+   " color='#000080'>&nbsp;</font></TD>          "+
+   " <TD width='37' VALIGN='TOP' HEIGHT=3><font face='verdana,arial' size='1'           "+
+   " color='#000080'>&nbsp;</font></TD>          "+
+   " </TR></table><br><br>          ";
+}
+
+function tab(serie,campo,casilla,descrip,dato ) {
+  return " <tr><td><center><font size=3>"+serie+"</td> "+
+         " <td><center><font size=3>"+campo+"</td> "+
+         " <td><center><font size=3>"+casilla+"</td> "+
+         " <td><font size=3>"+descrip+"</td> "+
+         " <td><font size=3>"+dato+"</font> </td></tr> ";
+
+}
+ function tab_cab() {
+  return " <TABLE align='center' border= 2 width=95%><tr> "+
+         "    <td align='center' class='Titulo0' >No.Serie</td> "+ 
+         "    <td align='center' class='Titulo0' >Campo Modificado</td> "+
+         "    <td align='center' class='Titulo0' >Descripción del Campo</td> "+
+         "    <td align='center' class='Titulo0' >Nuevo dato transmitido</td> " +
+         "    <td align='center' class='Titulo0' >Casilla</td></tr> ";
+}
+
+/////// fvr : Se incluyen nuevas funciones
+var statusmsg="";
+function Buscar(dire) {
+var ADJ2 = prompt("Ingrese Texto a Buscar","");
+BuscarTexto(dire,ADJ2);
+		 }	
+
+function hidestatus(){
+window.status=statusmsg;
+return true;
+}
+
+function ventana(page,ancho,alto,izq,der,barra) {
+ win2 = window.open(page, 'Navigation','width='+ancho+',height='+alto+',left='+izq+',top='+der+',scrollbars='+barra+',status=no');
+		 }	
+////// se pone para teclado
+function BuscarTexto(direurl,texto){
+	///var sURL=location.protocol + "//" + location.host + direurl;
+	var sURL= direurl;
+   	if (texto == null )	
+	 texto =" ";
+
+	window.external.NavigateAndFind(sURL,texto,"");	
+	}
+
+function Fechabox(variable) {
+		Todays = new Date();
+		var dia=Todays.getDate();
+		if (dia<10) dia="0"+dia
+			var mes=(Todays.getMonth()+1);
+		if (mes<10) mes="0"+mes
+		var ano=Todays.getYear();
+		if (ano<=99 && ano>=90) {
+		   ano="19" + ano;
+		}
+		else {
+		  ano=ano;
+		}
+document.write("<input type='text' size='10' tabindex='8' maxlength='10' name='"+variable+"'");
+document.write(" value='");
+document.write(dia +"/"+ mes+"/"+ano );
+document.write("'>");
+
+}
+
+function getKey(keyStroke) {
+isNetscape=(document.layers);
+// Cross-browser key capture routine couresty
+// of Randy Bennett (rbennett@thezone.net)
+eventChooser = (isNetscape) ? keyStroke.which : event.keyCode;
+which = String.fromCharCode(eventChooser).toLowerCase();
+for (var i in key) if (which == i) window.location = key[i];
+}
+document.onkeypress = getKey;
+var key = new Array();  // Define key launcher pages here
+////////////Hasta aqui inclusión 15/04/200
+
+function LongDeclarante ( pTipoDoc, pDocumen, pNombre, pDireccion )
+{	var LongDeclarante = true;
+	if (!( pTipoDoc.length == 0 || Trim(pTipoDoc)  == ' ' ))
+	{	if ( Trim(pNombre).length < 4 )
+		{	alert("LONGITUD DEL NOMBRE NO VALIDA DEBE SER MAYOR A 4");
+			LongDeclarante = false;
+		}
+		if ( (pTipoDoc == "4") && (!(Trim(pDocumen).length == 11)) )
+		{	alert("LONGITUD DE RUC INVALIDO DEBE SER DE 11 CARACTERES");
+			LongDeclarante = false;
+		}
+		if ( (pTipoDoc == "2" || pTipoDoc == "3") && (!(Trim(pDocumen).length == 8)) )
+		{	alert("LONGITUD DE LE/DNI INVALIDO DEBE SER DE 8 CARACTERES");
+			LongDeclarante = false;
+		}
+		if ( (pTipoDoc == "6" || pTipoDoc == "7") && ( (Trim(pDocumen).length < 4) || (Trim(pDocumen).length > 11) ) )
+		{	alert("LONGITUD DE PASAPORTE/CARNET DE EXTRANJERIA INVALIDO DEBE SER ENTRE 4 Y 11 CARACTERES");
+			LongDeclarante = false;
+		}
+		if ( (pTipoDoc == "10" || pTipoDoc == "12") )
+		{	if ( Trim(pDocumen).length > 10 )
+			{	alert("LONGITUD DE LIBRETA MILITAR/LICENCIA DE CONDUCIR INVALIDO DEBE SER DE A LO MAS 10 CARACTERES");
+				LongDeclarante = false;
+			}
+		}
+		else // Demás tipos de Documento (Que se insertan al DECLARAN)  
+		{	if ( Trim(pDireccion).length > 0 && Trim(pDireccion).length < 6 )
+			{	alert("LONGITUD DE DIRECCION DEBE SER DE POR LO MENOS 6 CARACTERES");
+				LongDeclarante = false;
+			}
+		}
+	}
+	return LongDeclarante;
+}
+
+function ValidacionHora(hora) 
+{   if ( (hora.length !=5) || 
+		(hora.substring(2,3) !=':') || 
+		(hora.substring(0,2) > 24) || 
+		(hora.substring(3,5) > 59))
+	{	alert("Ingrese la hora correctamente (5 caracteres incluyendo :)");
+        return false;
+    }
+	return true;
+}
+
+function ntod(fecha8n) {
+if (fecha8n.length=0)
+{alert(fecha8n);
+document.write('00/00/0000');}
+else
+{
+    document.write(	fecha8n.substring(6, 8)+"/"+fecha8n.substring(4, 6)+"/"+fecha8n.substring(0, 4))
+}
+};
+function CortarCaracteres(cuadrotexto,maximo,contador){
+  var f = document.forms["frm"];
+  var maxlen = 0;
+  var cadena = "";
+  maxlen=maximo;
+  cadena=cuadrotexto.value
+
+   if (cadena.length > maxlen){
+	   cuadrotexto.value=cadena.substring(0,maxlen);
+	}
+  	ContarCaracteres(cuadrotexto,contador);
+}
+
+function ContarCaracteres(cuadrotexto,contador){
+  var f = document.forms["frm"];
+  	contador.value= cuadrotexto.value.length;
+}
+
+
+var message="SUNAT - Derechos Reservados© - 2004";
+
+function click(e)
+{
+  if(document.all)
+  {
+    if(event.button == 2 || event.button == 3)
+    {
+      alert(message);
+      return false;
+    }
+  }
+
+  if(document.layers)
+  {
+    if(e.which == 3)
+    {
+      alert(message);
+      return false;
+    }
+  }
+}
+
+if(document.layers)
+{
+  document.captureEvents(Event.MOUSEDOWN);
+}
+
+document.onmousedown=click;

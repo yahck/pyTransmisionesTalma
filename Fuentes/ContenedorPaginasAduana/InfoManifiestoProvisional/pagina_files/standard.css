@@ -1,0 +1,669 @@
+BODY,TABLE   { font-size: 8pt;
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+}
+TR
+{
+    FONT-FAMILY: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    FONT-SIZE: 8pt
+}
+TR
+{
+    FONT-FAMILY: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    FONT-SIZE: 8pt
+}
+.botitle
+{
+    FONT-SIZE: 11pt;
+    FONT-WEIGHT: bold
+}
+.bosubtitle
+{
+    COLOR: #e16400;
+    FONT-SIZE: 11pt;
+    FONT-WEIGHT: bold
+}
+.normalcenter
+{
+    FONT-FAMILY: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    FONT-SIZE: 10pt;
+    TEXT-ALIGN: center
+}
+.normalright
+{
+    TEXT-ALIGN: right
+}
+.normal
+{
+    FONT-FAMILY: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    FONT-SIZE: 11px
+}
+.bold
+{
+    FONT-FAMILY: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    FONT-SIZE: 11px;
+    FONT-STYLE: normal;
+    FONT-WEIGHT: bold;
+    TEXT-TRANSFORM: capitalize
+}
+.copyright
+{
+    FONT-FAMILY: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    FONT-SIZE: 7pt;
+    FONT-WEIGHT: normal;
+    TEXT-ALIGN: center;
+    TEXT-DECORATION: none
+}
+.fecha
+{
+    FONT-FAMILY: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    FONT-SIZE: 8pt
+}
+A.busquedaavanzada
+{
+    COLOR: black;
+    FONT-WEIGHT: bold
+}
+A.busquedaavanzada:hover
+{
+    BACKGROUND-COLOR: transparent;
+    COLOR: navy;
+    TEXT-DECORATION: underline
+}
+.error
+{
+    BACKGROUND-COLOR: transparent;
+    COLOR: red;
+    FONT-SIZE: 8pt;
+    FONT-WEIGHT: bold
+}
+.normaljustify
+{
+    TEXT-ALIGN: justify
+}
+.normalcentersmall
+{
+    FONT-SIZE: 10px;
+    TEXT-ALIGN: center
+}
+.normalleftsmall
+{
+    FONT-SIZE: 10px;
+    TEXT-ALIGN: left
+}
+.stdproductos
+{
+    FONT-SIZE: 9pt;
+    FONT-WEIGHT: normal
+}
+.stdmarcas
+{
+    FONT-SIZE: 9pt;
+    FONT-WEIGHT: normal
+}
+.stdhorarios
+{
+    BACKGROUND-COLOR: transparent;
+    COLOR: black;
+    FONT-SIZE: 9pt;
+    FONT-WEIGHT: normal
+}
+.stdcontactos
+{
+    BACKGROUND-COLOR: transparent;
+    COLOR: black;
+    FONT-SIZE: 9pt;
+    FONT-WEIGHT: normal
+}
+.stdaccesos
+{
+    BACKGROUND-COLOR: transparent;
+    COLOR: black;
+    FONT-SIZE: 9pt;
+    FONT-WEIGHT: normal
+}
+.stdformasdepago
+{
+    BACKGROUND-COLOR: transparent;
+    COLOR: black;
+    FONT-SIZE: 9pt;
+    FONT-WEIGHT: normal
+}
+.stdformasdepago .title
+{
+    FONT-WEIGHT: bold;
+    TEXT-DECORATION: underline
+}
+.stdcontactos .title
+{
+    FONT-WEIGHT: bold;
+    TEXT-DECORATION: underline
+}
+.stdcontactos .subtitle
+{
+    FONT-SIZE: 9pt;
+    FONT-WEIGHT: bold;
+    TEXT-DECORATION: none
+}
+.stdaccesos .title
+{
+    FONT-WEIGHT: bold;
+    TEXT-DECORATION: underline
+}
+.stdhorarios .dias
+{
+    FONT-SIZE: 9pt;
+    FONT-WEIGHT: 600;
+    TEXT-DECORATION: none
+}
+.stdhorarios .title
+{
+    FONT-WEIGHT: bold;
+    TEXT-DECORATION: underline
+}
+.stdmarcas .title
+{
+    FONT-WEIGHT: bold;
+    TEXT-DECORATION: underline
+}
+.stdproductos .title
+{
+    FONT-WEIGHT: bold;
+    TEXT-DECORATION: underline
+}
+.stdformasdepago .subtitle
+{
+    FONT-SIZE: 9pt;
+    FONT-WEIGHT: 600;
+    TEXT-DECORATION: none
+}
+.stdformasdepago .descrip
+{
+    FONT-SIZE: 7pt;
+    TEXT-DECORATION: none
+}
+.copyright A
+{
+    BACKGROUND-COLOR: transparent;
+    COLOR: black;
+    FONT-SIZE: 7pt;
+    FONT-WEIGHT: 600;
+    TEXT-DECORATION: none
+}
+.copyright A:hover
+{
+    BACKGROUND-COLOR: transparent;
+    COLOR: red;
+    FONT-SIZE: 7pt;
+    FONT-WEIGHT: 600;
+    TEXT-DECORATION: none
+}
+.codigos
+{
+    BORDER-BOTTOM: #999999 1px solid;
+    BORDER-LEFT: #fff4cc 1px solid;
+    BORDER-RIGHT: black 0px solid;
+    BORDER-TOP: black 0px solid;
+    FONT-SIZE: 9pt;
+    HEIGHT: 15px;
+    PADDING-LEFT: 5px
+}
+.codigos:hover
+{
+    BACKGROUND-COLOR: transparent;
+    COLOR: red
+}
+.linkatencionalcliente
+{
+    BACKGROUND-COLOR: transparent;
+    COLOR: #ffb400;
+    FONT-WEIGHT: bold
+}
+.linkatencionalcliente:hover
+{
+    BACKGROUND-COLOR: transparent;
+    COLOR: #ff0000;
+    FONT-WEIGHT: bold
+}
+.linkatencionalcliente:visited
+{
+    BACKGROUND-COLOR: transparent;
+    COLOR: #408080;
+    FONT-WEIGHT: bold
+}
+.link
+{
+    BACKGROUND-COLOR: transparent;
+    COLOR: black;
+    FONT-WEIGHT: bold;
+    TEXT-DECORATION: underline
+}
+.link:hover
+{
+    BACKGROUND-COLOR: transparent;
+    COLOR: red;
+    FONT-WEIGHT: bold;
+    TEXT-DECORATION: none
+}
+.linksubcategoria
+{
+    BACKGROUND-COLOR: transparent;
+    COLOR: black;
+    TEXT-DECORATION: underline
+}
+.linksubcategoria:hover
+{
+    BACKGROUND-COLOR: transparent;
+    COLOR: red;
+    TEXT-DECORATION: none
+}
+.tiendasmasbuscadas
+{
+    COLOR: black;
+    FONT-FAMILY: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    FONT-SIZE: x-small;
+    FONT-WEIGHT: normal;
+    LETTER-SPACING: -0.9pt;
+    TEXT-DECORATION: none
+}
+.tiendasmasbuscadas:hover
+{
+    COLOR: red;
+    TEXT-DECORATION: underline
+}
+.losmasbuscados
+{
+    COLOR: black;
+    FONT-FAMILY: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    FONT-SIZE: 11px;
+    FONT-WEIGHT: normal;
+    LETTER-SPACING: -0.9pt;
+    TEXT-DECORATION: none;
+    TEXT-TRANSFORM: capitalize
+}
+.losmasbuscados:hover
+{
+    COLOR: red;
+    FONT-SIZE: 11px;
+    TEXT-DECORATION: none;
+    TEXT-TRANSFORM: capitalize
+}
+.losmasbuscadostitle
+{
+    FONT-FAMILY: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    FONT-SIZE: 8pt;
+    FONT-WEIGHT: bold;
+    LETTER-SPACING: -1px;
+    TEXT-ALIGN: center
+}
+.cupontitulo
+{
+    COLOR: #000000;
+    FONT-FAMILY: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    FONT-SIZE: 9pt;
+    FONT-WEIGHT: bold;
+    TEXT-TRANSFORM: capitalize
+}
+.cupontitulo:hover
+{
+    COLOR: #ff0000;
+    TEXT-TRANSFORM: capitalize
+}
+.cupon
+{
+    COLOR: #000000;
+    FONT-FAMILY: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    FONT-SIZE: 9pt;
+    TEXT-TRANSFORM: capitalize
+}
+.cupon:hover
+{
+    COLOR: #ff0000;
+    TEXT-TRANSFORM: capitalize
+}
+.portal
+{
+    COLOR: #ee8800;
+    FONT-FAMILY: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    FONT-SIZE: 10pt;
+    FONT-WEIGHT: bold
+}
+.portal:hover
+{
+    COLOR: #ff0000
+}
+.portalsubrubro
+{
+    COLOR: black;
+    FONT-FAMILY: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    FONT-SIZE: 9pt;
+    LINE-HEIGHT: 20px;
+    TEXT-INDENT: 15px;
+    TEXT-TRANSFORM: capitalize
+}
+.portalsubrubro:hover
+{
+    COLOR: red
+}
+.shopcomboaddress
+{
+    COLOR: black
+}
+.shopcomboname
+{
+    COLOR: black;
+    FONT-WEIGHT: bold;
+    PADDING-BOTTOM: 2px;
+    PADDING-LEFT: 4px
+}
+.shopcombophone
+{
+    COLOR: black;
+    FONT-WEIGHT: bold;
+    PADDING-BOTTOM: 2px
+}
+.shopcombotype
+{
+    COLOR: black;
+    FONT-FAMILY: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    FONT-SIZE: 8pt;
+    TEXT-TRANSFORM: capitalize
+}
+.shopname
+{
+    COLOR: #00939f;
+    FONT-FAMILY: Verdana, Arial;
+    FONT-SIZE: 11px;
+    FONT-WEIGHT: bold;
+    MARGIN-LEFT: 7px;
+    TEXT-DECORATION: none
+}
+.shopphone
+{
+    COLOR: black;
+    FONT-FAMILY: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    FONT-SIZE: 11px;
+    FONT-WEIGHT: bold;
+    TEXT-DECORATION: none
+}
+.shoptype
+{
+    COLOR: black;
+    FONT-FAMILY: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    FONT-SIZE: 10px;
+    TEXT-TRANSFORM: capitalize
+}
+A.doradalink
+{
+    COLOR: #3664c7;
+    FONT-WEIGHT: bold
+}
+A.doradalink:hover
+{
+    COLOR: #4580ff;
+    FONT-WEIGHT: bold
+}
+.shopcombodescript
+{
+    COLOR: black;
+    FONT-FAMILY: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    FONT-SIZE: 9pt;
+    FONT-WEIGHT: bold
+}
+.shoplaleli
+{
+    COLOR: black;
+    FONT-STYLE: italic;
+    FONT-WEIGHT: normal
+}
+A.multipagelink
+{
+    COLOR: black;
+    FONT-SIZE: 10px;
+    TEXT-DECORATION: none
+}
+A.multipagelink:hover
+{
+    COLOR: blue;
+    FONT-SIZE: 10px;
+    FONT-WEIGHT: bold
+    TEXT-DECORATION: underline
+}
+A.head_title
+{
+    COLOR: white;
+    FONT-SIZE: 10px;
+    TEXT-DECORATION: none
+}
+A.head_title:hover
+{
+    COLOR: yellow;
+    FONT-SIZE: 10px;
+    TEXT-DECORATION: underline
+}
+A.consultas
+{
+    COLOR: black;
+    FONT-SIZE: 10px;
+    TEXT-DECORATION: none
+}
+A.consultas:hover
+{
+    FONT-SIZE: 10px;
+    FONT-WEIGHT: bold;
+    TEXT-DECORATION: underline
+}
+.guiatelefonica
+{
+    COLOR: black;
+    FONT-FAMILY: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    FONT-SIZE: 10px;
+    TEXT-DECORATION: none
+}
+.guiatelefonica:hover
+{
+    COLOR: red;
+    TEXT-DECORATION: underline
+}
+.guiatelefonicarightitle
+{
+    COLOR: white;
+    FONT-FAMILY: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    FONT-SIZE: 8pt;
+    FONT-WEIGHT: bold;
+    LETTER-SPACING: -0.6pt
+}
+.guiatelefonicanotice
+{
+    COLOR: black;
+    FONT-FAMILY: serif;
+    FONT-SIZE: 11px
+}
+.NotTit
+{
+    COLOR: black;
+    FONT-FAMILY: Verdana;
+    FONT-SIZE: 13px;
+    FONT-STYLE: normal;
+    FONT-VARIANT: normal;
+    FONT-WEIGHT: bold;
+    TEXT-DECORATION: none
+}
+.TDclass
+{
+    FONT-FAMILY: Verdana, geneva, Arial, sans-serif;
+    FONT-SIZE: 9pt
+}
+.ColorNegro
+{
+    COLOR: black;
+    FONT-FAMILY: Verdana, Arial;
+    FONT-SIZE: x-small;
+    LETTER-SPACING: -0.9pt
+}
+.ColorRojo
+{
+    COLOR: red;
+    FONT-FAMILY: Verdana, Arial;
+    FONT-SIZE: x-small;
+    LETTER-SPACING: -0.9pt
+}
+.HomeAyuda
+{
+    COLOR: black;
+    FONT-FAMILY: Verdana, Arial, sans-serif;
+    FONT-SIZE: 10px;
+    TEXT-DECORATION: none
+}
+.losmasbuscadosNS
+{
+    COLOR: black;
+    FONT-FAMILY: Verdana, Arial;
+    FONT-SIZE: 7.5pt;
+    FONT-WEIGHT: normal;
+    LETTER-SPACING: -0.9pt;
+    TEXT-DECORATION: none;
+    TEXT-TRANSFORM: capitalize
+}
+A.categorias_home
+{
+    COLOR: black;
+    FONT-FAMILY: Verdana, Arial;
+    FONT-SIZE: 9pt;
+    TEXT-DECORATION: none
+}
+.shopaddress
+{
+    FONT-FAMILY: Verdana, Arial;
+    FONT-SIZE: 10px
+}
+A.categorias_home:hover
+{
+    COLOR: red;
+    FONT-FAMILY: Verdana, Arial;
+    FONT-SIZE: 9pt;
+   FONT-WEIGHT: bold;
+    TEXT-DECORATION: none
+}
+.form
+{
+    FONT-FAMILY: Verdana, Geneva, Arial, Helvetica;
+    FONT-SIZE: 10px;
+    TEXT-DECORATION: none
+}
+A.linkguiasmundo
+{
+    COLOR: #000000;
+    FONT-FAMILY: Verdana, Arial, Geneva, Helvetica, sans-serif;
+    FONT-SIZE: 10px;
+    TEXT-DECORATION: underline
+}
+A.w_combo
+{
+    COLOR: #00939f;
+    FONT-FAMILY: Verdana, Arial;
+    FONT-SIZE: 11px
+}
+A.w_combo:hover
+{
+    COLOR: #ff6500;
+    FONT-FAMILY: Verdana, Arial;
+    FONT-SIZE: 11px;
+    TEXT-DECORATION: underline
+}
+A.NoTtit:hover
+{
+    COLOR: red;
+    FONT-FAMILY: Verdana;
+    FONT-SIZE: 13px;
+    FONT-STYLE: normal;
+    FONT-VARIANT: normal;
+    FONT-WEIGHT: bold;
+    TEXT-DECORATION: none
+}
+A.HomeAyuda2
+{
+    COLOR: black;
+    FONT-FAMILY: Verdana, Arial, sans-serif;
+    FONT-SIZE: 9pt;
+    TEXT-DECORATION: none
+}
+A.HomeAyuda2:hover
+{
+    COLOR: red;
+    FONT-FAMILY: Verdana, Arial, sans-serif;
+    FONT-SIZE: 9pt;
+    TEXT-DECORATION: none
+}
+.maccopyright
+{
+    FONT-FAMILY: Verdana, geneva, Arial, helvetica, sans-serif;
+    FONT-SIZE: 10px
+}
+.maccopyright A
+{
+    COLOR: black;
+    FONT-FAMILY: Verdana;
+    FONT-SIZE: 10px;
+    FONT-WEIGHT: 600;
+    TEXT-DECORATION: none
+}
+.maccopyright A:hover
+{
+    COLOR: red;
+    FONT-SIZE: 10px;
+    FONT-WEIGHT: 600;
+    FONT-WEIGHT: bold;
+    TEXT-DECORATION: none
+}
+.iconitos
+{
+    COLOR: #00939f;
+    FONT-FAMILY: Verdana, Arial;
+    FONT-SIZE: 10px
+}
+A.Top
+{
+    COLOR: black;
+    FONT-FAMILY: Verdana, Arial;
+    FONT-SIZE: 10px;
+    TEXT-DECORATION: none
+}
+A.Top:hover
+{
+    COLOR: red;
+    FONT-FAMILY: Verdana, Arial;
+    FONT-SIZE: 10px;
+    TEXT-DECORATION: none
+}
+A.topmac
+{
+    COLOR: black;
+    FONT-FAMILY: Verdana, Arial;
+    FONT-SIZE: 10px;
+    TEXT-DECORATION: none
+}
+A.topmac:hover
+{
+    COLOR: red;
+    FONT-FAMILY: Verdana, Arial;
+    FONT-SIZE: 10px;
+    TEXT-DECORATION: none
+}
+.aaaa
+{
+    COLOR: black;
+    FONT-FAMILY: Verdana, Arial, sans-serif;
+    FONT-SIZE: 8px
+}
+.CD_Envio
+{
+    COLOR: #ff0000;
+    FONT-FAMILY: Verdana, Arial;
+    FONT-SIZE: 10pt
+}
+A.CD_Envio:hover
+{
+    COLOR: #000000;
+    FONT-FAMILY: Verdana, Arial;
+    FONT-SIZE: 10pt
+}
