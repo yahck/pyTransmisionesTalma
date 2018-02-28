@@ -18,12 +18,10 @@ Transmisiones
 Se creará un nuevo sitio web para el tablero de transmisiones, no se usara el de PCO ya que su seguridad apunta a "Gestion de usuarios" que solo funciona en IE mas no en chrome
 
 
-
-
 tlmsrvweb2
 
 
-Quitarl la columna de manifiesto provisional ya que dicha columna es la misma que la columna numeración de la grilla madre
+Quitar la columna de manifiesto provisional ya que dicha columna es la misma que la columna numeración de la grilla madre
 
 Encasillar las columnas de procesos por responsbilidad en la grilla hija
 
