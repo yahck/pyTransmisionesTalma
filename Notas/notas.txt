@@ -1,4 +1,17 @@
+pendientes:
+- LA TABLA DE VUELOS SE DEBE ACTUALIZAR
+- VER EL CASO CON MANIFIESTOS SOBRE EL VUELO 
+   LP-2531 DEL DIA 02/03/2018 PERO HAY DOS REGISTROSO CON DIFERENTE PUERTO ORIGEN
 
+
+Servicio que lee los archivos de respuesta estaran en este server
+172.16.79.188
+tlmusrwebc.prd
+tlmc4rg4.
+
+
+
+-----------------------
 0016:  	0016 - UNITED AIRLINES
 5591:   Clave
 
