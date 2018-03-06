@@ -1,7 +1,14 @@
+
+Correo hermes:
+hermes@talma.com.pe
+H3rm3s$CTX
+
+------------------
 pendientes:
 - LA TABLA DE VUELOS SE DEBE ACTUALIZAR
 - VER EL CASO CON MANIFIESTOS SOBRE EL VUELO 
    LP-2531 DEL DIA 02/03/2018 PERO HAY DOS REGISTROSO CON DIFERENTE PUERTO ORIGEN
+
 
 
 Servicio que lee los archivos de respuesta estaran en este server
