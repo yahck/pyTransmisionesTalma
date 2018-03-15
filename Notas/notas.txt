@@ -1,4 +1,11 @@
+Transmisiones Teledespacho
+--------------------------
+-La opción de transmisión por Teledespacho aún esta operativa ?
+-Donde deja los archivos ? 
+-Proyecto para expo: D:\Sistemas\WsTransmisionesExpo\WsTransmisionesExpo\WS_TransmisionesExpo\WS_TransmisionesExpo
 
+
+------------------------------
 Registro de la Fecha y Hora del Término de Descarga
 Registro Término de embarque
 
