@@ -1,0 +1,32 @@
+Visualización de los indicadores
+--------------------------------
+Al ingresar al tablero los indicadores automaticamente se visualizaran de acuerdo al total de todos los vuelos visibles en el momento de acuerdo a la siguiente lógica:
+
+GHA-Impo:
+
+Numeracion: 
+- Azul: Contará la cantidad total de transmisiones realizadas con exito
+- Ambar: Contará la cantidad total de vuelos en color Ambar
+- Rojo: Contará la cantidad total de vuelos en color Rojo
+- Verde: Contará la cantidad total de vuelos en color verde
+- Plomo: Este indicador mostrará la cantidad de vuelos que contaran con numeración independientemente si se transmistio o no(la suma de todos los colores deberian dar el total que se indicara como color plomo )
+
+ETA: 
+  IDEM
+ANEXO 4: 
+  IDEM
+DOC.VINCULADOS:
+  IDEM
+ANEXO5:
+
+ANEXO6: 
+- Azul: Contará la cantidad total de transmisiones realizadas con exito
+- Ambar: Contará la cantidad total de vuelos en color Ambar
+- Rojo: Contará la cantidad total de vuelos en color Rojo
+- Verde: Contará la cantidad total de vuelos en color verde
+- Plomo: Este indicador mostrará la cantidad de vuelos que contaran con Anexo 6(no se consideraran los que estan en estado no disponible)
+- Todos los vuelos iniciran como inactivos
+Estado no disponible: este estado se actualizará al realizar la tarja 
+
+
+ 
