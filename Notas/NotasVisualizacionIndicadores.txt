@@ -1,6 +1,6 @@
 Visualización de los indicadores
 --------------------------------
-Al ingresar al tablero los indicadores automaticamente se visualizaran de acuerdo al total de todos los vuelos visibles en el momento de acuerdo a la siguiente lógica:
+Al ingresar al tablero los indicadores automaticamente se visualizaran de acuerdo al total de todos los vuelos visibles en el momento segun la siguiente lógica:
 
 GHA-Impo:
 
@@ -9,7 +9,7 @@ Numeracion:
 - Ambar: Contará la cantidad total de vuelos en color Ambar
 - Rojo: Contará la cantidad total de vuelos en color Rojo
 - Verde: Contará la cantidad total de vuelos en color verde
-- Plomo: Este indicador mostrará la cantidad de vuelos que contaran con numeración independientemente si se transmistio o no(la suma de todos los colores deberian dar el total que se indicara como color plomo )
+- Plomo: Este indicador mostrará la cantidad de vuelos que deben realizar el proceso de numeración independientemente si se transmistio o no(la suma de todos los colores deberian dar el total que se indicara como color plomo )
 
 ETA: 
   IDEM
@@ -17,16 +17,71 @@ ANEXO 4:
   IDEM
 DOC.VINCULADOS:
   IDEM
-ANEXO5:
+ANEXO5: Inicialmente este proceso nó se visualizará para un vuelo determinado. El que se muestre como listo para ser transmisito o que muestre un estado deshabilitado dependerá del cierre de vuelo. 
 
-ANEXO6: 
+ANEXO6: Inicialmente este proceso nó se visualizará para un vuelo determinado. El que se muestre como listo para ser transmisito o que muestre un estado deshabilitado dependerá del cierre de vuelo. 
+
 - Azul: Contará la cantidad total de transmisiones realizadas con exito
 - Ambar: Contará la cantidad total de vuelos en color Ambar
 - Rojo: Contará la cantidad total de vuelos en color Rojo
 - Verde: Contará la cantidad total de vuelos en color verde
 - Plomo: Este indicador mostrará la cantidad de vuelos que contaran con Anexo 6(no se consideraran los que estan en estado no disponible)
-- Todos los vuelos iniciran como inactivos
+- Todos los vuelos iniciaran como inactivos
 Estado no disponible: este estado se actualizará al realizar la tarja 
 
 
- 
+Estados/colores:
+----------------
+NO VISIBLE      INV
+INACTIVO        INA
+DISPONIBLE
+	VERDE
+	AMBAR
+	ROJO
+	AZUL
+	PLOMO 
+
+------------------------------------------------
+LOGICA PARA PINTAR EN AZUL EL ANEXO 5 Y ANEXO 6
+------------------------------------------------
+0:ESTA LOGICA DE APLICA A PARTIR DE LA SEÑAL DE LA FUNCION COLOR EL CUAL INDICARA QUE ESTA EN ESTADO DISPONIBLE O CUALQUIER COLOR DIFERENTE A INV Ó INA
+1:OBTENEMOS LA CANTIDAD DE GUIAS DEL MANIFIESTO (EJM: 11)
+SELECT * FROM TLMIMPO.TDMANI_IMPO WHERE NU_MANI = '201800000008880' AND TI_GUIA = 'D' AND ST_GUIA != 'ANU'
+2:UNION DE ESTAS DOS TABLAS 
+EDIT TLMTRADU.ADU_TBARCH_GUIA where NU_MANI = '201800000008880'
+EDIT TLMIMPO.TDMANI_ENVI where NU_MANI = '201800000008880'
+3:INNER JOIN DEL PASO 2 CON LA TABLA RESPUESTA DE ARCHIVOS QUE NO HAYAN TENIDO ERRORES POR EL NUMERO DE ORDEN
+EDIT TT_RESPUESTA_ADUANA WHERE ANIO = '2018' AND NUMORDEN = '130978'
+4:SI LA CANTIDAD DE REGISTROS DEL PUNTO 3 ES MAYOR O IGUAL A LA CANTIDAD DEL PUNTO 1 ENTONCES SE REALIZO BIEN TODO EL PROCESO ANEXO 5 DEL VUELO 
+  ENTONCES PINTARA DE AZUL
+6:DE O CONTRARIO PINTARA LOS COLORES DE ACUERDO A LA FUNCION COLOR
+-----------------------
+
+-- TRANSMISIONES NPDA
+EDIT TLMIMPO.TDMANI_ENVI WHERE NU_MANI = '201800000008880' AND NU_GUIA = '004503241442'
+2 es anexo 5
+-- TRANSMISIONES HERMES
+EDIT TLMTRADU.ADU_TBARCH_GUIA WHERE NU_MANI = '201800000008880'  AND CO_TITRANS in (8, 3)
+AND NU_GUIA_MADR = '004503241442'  
+8 ó 3 es anexo 5
+
+--Maestro de transmisiones por Hermes 
+EDIT TLMTRADU.TTTIPO_TRANS  
+
+Anexo 5
+ - bulto_rec > 0 YA QUE SI bult_rec = 0 ENTONCES no hay tarja por lo que no hay anexo 5
+ - 
+Anexo 6
+ - bult mani <> bult reci
+ - bult mal estado > 0
+ - falto total de la guia (bult_rec = 0)
+
+-- Tabla de respuestas de aduana para anexo 5 y 6
+EDIT TT_RESPUESTA_ADUANA WHERE ANIO = '2018' AND NUMORDEN = '130978'
+
+
+SELECT TLMTRADU.FN_COLOR_PROCES('20/03/2018', 'LP', '2449', 3) from dual
+
+select * from TLMIMPO.TMREGISTROS_ACMA   where GUCODAEROLINEALET = 'LA' and GUIMPORTEXPORT = 'I' and GUNUMVUELO = '0601'
+and GUNUMGUIA = '004503307581'
+and substr(GUFECHAVUELO, 10) = '2018-03-13'
