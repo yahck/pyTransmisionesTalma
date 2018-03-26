@@ -1,109 +1,60 @@
 Transmisiones Teledespacho
 --------------------------
--La opción de transmisión por Teledespacho aún esta operativa ?
--Donde deja los archivos ? 
--Proyecto para expo: D:\Sistemas\WsTransmisionesExpo\WsTransmisionesExpo\WS_TransmisionesExpo\WS_TransmisionesExpo
 
-
+Tablero GHA
 ------------------------------
-Registro de la Fecha y Hora del Término de Descarga
-Registro Término de embarque
+- LA TABLA DE VUELOS SE DEBE ACTUALIZAR
+-No mostrar los bultos manifestado en la grilla madre
+-Para faltos totales se debe transmitir el anexo 6 hijo o master y bloquearse la columna del enexo 5 y 7, ya que esta guía núnca llego(se reconoce un falto por la letra F)
 
+
+
+Tablero IMPO
+---------------
+-Encasillar las columnas de procesos por responsabilidad en la grilla hija
+-Quitar la columna de manifiesto provisional en la grilal hija ya que dicha columna es la misma que la columna numeración de la grilla madre
+-Para faltos totales la se debe transmitir el anexo 6 hijo o master y bloquearse la columna del enexo 5 y 7 ya que esta guia nunca llego(se reconoce un falto por la letra F)
+-El error se puede visualizarlo posandose en la celda del error y que se levante un tooltip del error en la cela o la otra alternativa es que se levante una ventana desde la columna tipo de error por todos los errores que se generaron
+-Reabrir el vuelo por cambio de modalidad, se da cuento el vuelo ya fue cerrado y desaparecio del tablero(caso: cambio de modalidad) el -cambio se da de los 02 a los 03 
+La guia inicialmente no hiba a ingresar al almacen porque esta dirigida a otro almacen , despues se decide que se va a tarjar en talma por lo que se ingresa la guia en hermes y deberia visualizarse en el tablero para visualizar todas sus transmisiones.
+-Cuando se incorpoara una guia despues de cerrado el vuelo o antes porque esa guia no fue declarada en el manifiesto(esas guias se presenta expediente) por lo que yo tendria que descartar estas guias para esto manifiestos registrará en gestion de guias la palabra "ADICION DE GUIA" para lo cual me daria el indicador de que no debo considerar esa guia en el vuelo ni el el tablero 
+-Tomar como modelo para el visor de transmisiones de TCI que se instaló
+
+
+Tablero EXPO
+----------------
+-La columna bultos manifestados debera ser reemplazada por numero de guias "NUMERO GUIAS"
+-Las guias de expo se deberá jalarlas del sistema de sitrade, igualmente para los agentes de carga de exportación
+
+Servicio WCF
+-------------
+-Modificar el servicio web para que nos grabe el terminal(actualmente se graba pordefecto 3507)
+-verificar igualmente el SHC
+-Verificar que se estan guardando todos los campos que TCI nos esta pasando.
+
+Fuentes:  \\172.16.28.21\ImpoWCF
+
+
+VARIOS
+-------
 MFTO: 235-2018-7281/ VUELO: DL-151 / MAT: N843MH
-
-
-ROJ
-NAR
-VER
-AZU
-
 -----------------
 Correo hermes:
 hermes@talma.com.pe
 H3rm3s$CTX
-
 ------------------
-pendientes:
-- LA TABLA DE VUELOS SE DEBE ACTUALIZAR
-- VER EL CASO CON MANIFIESTOS SOBRE EL VUELO 
-   LP-2531 DEL DIA 02/03/2018 PERO HAY DOS REGISTROSO CON DIFERENTE PUERTO ORIGEN
-
-
-
 Servicio que lee los archivos de respuesta estaran en este server
 172.16.79.188
 tlmusrwebc.prd
 tlmc4rg4.
-
-
-
 -----------------------
 0016:  	0016 - UNITED AIRLINES
 5591:   Clave
-
-Registro de Fecha de Llegada y Autorización de la Descarga
-Registro de la Fecha y Hora del Termino de Descarga 
-
+---------------------
 envio 3: transmision provisional(esta no esta en un vuelo)
 
 envio 4: transmision de rectificacion(se rectifica datos de consignatario, shipper, bultos y peso)
   menos numero de guia hija y contenido
 
 envio 6: envio de la complementaria 
-
-
-Transmisiones
-----------------------------
-Se creará un nuevo sitio web para el tablero de transmisiones, no se usara el de PCO ya que su seguridad apunta a "Gestion de usuarios" que solo funciona en IE mas no en chrome
-
-
-tlmsrvweb2
-
-
-Quitar la columna de manifiesto provisional ya que dicha columna es la misma que la columna numeración de la grilla madre
-
-Encasillar las columnas de procesos por responsbilidad en la grilla hija
-
-
-No mostrar los bultos manifestado en la grilla madre
-
-Para faltos totales la se debe transmitir el anexo 6 hijo o master y bloquearse la columna del enexo 5 y 7 ya que esta guia nunca llego(se reconoce un falto por la letra F)
-
-
-El error se puede visualizarlo posandose en la celda del error y que se levante un tooltip del error en la cela o la otra alternativa es que se levante una ventana desde al columna tipo de error por todos los errores que se generaron
-
-
-reabrir el vuelo por cambio de modalidad, se da cuento el vuelo ya fue cerrado y desaparecio del tablero(caso: cambio de modalidad) el cambio se da de los 02 a los 03  
-la guia inicialmente no hiba a ingresar al almacen porque esta dirigida a otro almacen , despues se decide que se va a tarjar en talma por lo que se ingresa la guia en hermes y deberia visualizarse en el tablero para visualizar todas sus transmisiones.
-
-
-cuando se incorpoara una guia despues de cerrado el vuelo o antes porque esa guia no fue declarada en el manifiesto(esas guias se presenta expediente) por lo que yo tendria que descartar estas guias para esto manifiestos registrará en gestion de guias la palabra "ADICION DE GUIA" para lo cual me daria el indicador de que no debo considerar esa guia en el vuelo ni el el tablero 
-
-
-TAblero expo:
-La columna bultos manifestados debera ser reemplazada por numero de guias "NUMERO GUIAS"
-
-Las guias de expo se deberá jalarlas del sistema de sitrade, igualmente para los agentes de carga de exportación
-
-
 --------
-
-Modificar el servicio web para que nos grabe el terminal(actualmente se graba pordefecto 3507)
-verificar igualmente el SHC
-
-reunirse con TCI para que nos devuelvan el manifiesto, 
-
-Fuentes:  \\172.16.28.21\ImpoWCF
-
-----
-ver el tema de la modificación del servicio ACMA
-ver el tema de la Teledespacho
-
-------------
-
-
-
-GHA: Solo visualizará los indicadores de las responsabilidades del transportista y solo las líneas aéreas del grupo al que pertenece
-IMPO: Visualizará los indicadores de todos los grupos de responsabilidades
-EXPO: visualizara los indicadores de todos 
-
