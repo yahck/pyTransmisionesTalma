@@ -1,110 +1,123 @@
-Transmisiones Teledespacho
---------------------------
-s
--La opción de transmisión por Teledespacho aún esta operativa ?
--Donde deja los archivos ? 
--Proyecto para expo: D:\Sistemas\WsTransmisionesExpo\WsTransmisionesExpo\WS_TransmisionesExpo\WS_TransmisionesExpo
+Server: //172.16.28.21
+Web service: http://ws.talma.aero:8084/Code/Manifiesto.svc
 
-
-------------------------------
-Registro de la Fecha y Hora del Término de Descarga
-Registro Término de embarque
-
-MFTO: 235-2018-7281/ VUELO: DL-151 / MAT: N843MH
-
-
-ROJ
-NAR
-VER
-AZU
-
------------------
-Correo hermes:
-hermes@talma.com.pe
-H3rm3s$CTX
-
-------------------
-pendientes:
-- LA TABLA DE VUELOS SE DEBE ACTUALIZAR
-- VER EL CASO CON MANIFIESTOS SOBRE EL VUELO 
-   LP-2531 DEL DIA 02/03/2018 PERO HAY DOS REGISTROSO CON DIFERENTE PUERTO ORIGEN
+Metodo: public int EnviarArchivoACMA(string usuario, string clave, string tipoTransaccion, byte[] buffer)
 
 
 
-Servicio que lee los archivos de respuesta estaran en este server
-172.16.79.188
-tlmusrwebc.prd
-tlmc4rg4.
+Jenny de TCI
+
+
+Obtener la DUA con el numero de GUIA
+
+Hacer la consulta del levante aduanero
+
+-----------------------------------------------------
+
+
+1:OBTENEMOS LA CANTIDAD DE GUIAS DEL MANIFIESTO (EJM: 11)
+SELECT * FROM TLMIMPO.TDMANI_IMPO WHERE NU_MANI = '201800000008880' AND TI_GUIA = 'D' AND ST_GUIA != 'ANU'
+2:UNION DE ESTAS DOS TABLAS 
+EDIT TLMTRADU.ADU_TBARCH_GUIA where NU_MANI = '201800000008880'
+EDIT TLMIMPO.TDMANI_ENVI where NU_MANI = '201800000008880'
+3:INNER JOIN DEL PASO 2 CON LA TABLA RESPUESTA DE ARCHIVOS QUE NO HAYAN TENIDO ERRORES POR EL NUMERO DE ORDEN
+EDIT TT_RESPUESTA_ADUANA WHERE ANIO = '2018' AND NUMORDEN = '130978'
+4:SI LA CANTIDAD DE REGISTROS DEL PUNTO 3 ES MAYOR O IGUAL A LA CANTIDAD DEL PUNTO 1 ENTONCES SE REALIZO BIEN TODO EL ANEXO 5 DEL VUELO 
+
+--------------------------------
+
+EDIT TT_MANIFIESTOPROVISIONAL
+SELECT * FROM TC_VUELO 
+WHERE IMPORT_EXPORT = 'IM' 
+AND COD_AEROLINEA = IN_COD_AEROLINEA 
+AND NUM_VUELO = IN_NUM_VUELO
+AND FEC_VUELO = TO_CHAR(IN_FEC_VUELO, 'DD/MM/YYYY') 
+        
+SELECT COUNT(*) vTIENE_ANEXO6 FROM TLMIMPO.TDMANI_IMPO
+WHERE CO_EMPR = '02' 
+AND CO_TERM = '3507' 
+AND TI_GUIA = 'D'
+AND ST_GUIA <> 'ANU'
+AND NU_MANI = '201800000008880'
+AND (NU_BULT_MANI != NU_BULT_RECI OR NU_BULT_MALO > 0 OR  NU_BULT_RECI =  0)
+
+ - bult mani <> bult reci
+ - bult mal estado > 0
+ - falto total de la guia (bult_rec = 0)
+
+ bulto_rec > 0, si bult_rec = 0 (no hay tarja por lo que no hay anexo 5)
+
+SELECT V.FEC_VUELO, V.COD_AEROLINEA, V.NUM_VUELO, V.IMPORT_EXPORT, 
+                      MI.NU_MANI, MI.NU_GUIA_MADR
+                 FROM TLMIMPO.TDMANI_IMPO MI INNER JOIN TC_VUELO V
+                   ON V.NUM_MANIFIESTO = MI.NU_MANI
+                WHERE MI.CO_EMPR = '02' AND MI.CO_TERM = '3507' AND MI.TI_GUIA = 'D'
+                  AND mi.st_guia <> 'ANU'
+                  AND (5 = 6 and (MI.NU_BULT_MALO > 0 OR MI.NU_BULT_MANI <> MI.NU_BULT_RECI ) or
+                       (5 = 5))
+                  AND V.FE_CREA BETWEEN TRUNC(SYSDATE) AND TRUNC(SYSDATE+1)
+AND NU_MANI = '201800000008880'
+11 GUIAS
+                  
+SELECT FEC_VUELO, COD_AEROLINEA, NUM_VUELO, IMPORT_EXPORT,
+                      NU_MANI, count(NU_MANI) CANTGUIAS 
+                 FROM MANIFIESTOS_VUELOS_DIA
+                GROUP BY FEC_VUELO, COD_AEROLINEA, NUM_VUELO, IMPORT_EXPORT, NU_MANI
+                
+11 GUIAS
+ENVIOS_SITRADE
+SELECT SND.NU_MANI FROM 
+(SELECT T1.NU_ORDEN, T1.NU_MANI, T1.NU_GUIA_MADR, T1.CO_ARCH NO_ARCH, T1.CO_USUA_CREA, T1.FE_USUA_CREA
+                 FROM TLMTRADU.ADU_TBARCH_GUIA T1 INNER JOIN TLMTRADU.TTTIPO_TRANS T3
+                   ON T1.CO_TITRANS = T3.CO_TITRANS AND T3.CO_EMPR = T1.CO_EMPR
+                WHERE T1.CO_EMPR = '02' AND T1.TI_NEGOCIO = 'IMP' AND T1.FE_USUA_CREA > SYSDATE - 1
+                  AND T1.CO_TITRANS IN (select * from table(FN_SPLIT(8, 3)))
+                UNION ALL
+               SELECT NU_ORDE, NU_MANI, NU_GUIA_MADR, NO_ARCH, CO_USUA_MODI CO_USUA_CREA, FE_USUA_MODI FE_USUA_CREA
+                 FROM TLMIMPO.TDMANI_ENVI
+                WHERE CO_EMPR = '02' AND CO_TERM = '3507' AND TI_ENTI = 'LIN' AND TP_OPER = '4'                   
+                  AND FE_USUA_MODI > SYSDATE - 1 AND TP_ENVI = 2
+                  AND NU_MANI = '201800000008880') SND
+INNER JOIN TT_RESPUESTA_ADUANA RESP ON SND.NU_ORDEN = RESP.NUMORDEN 
+WHERE RESP.CODERROR IS NULL
+                  AND RESP.FE_CREA BETWEEN TRUNC(SYSDATE) AND TRUNC(SYSDATE+1)
+                GROUP BY SND.NU_MANI
+                
+SELECT SND.NU_MANI, COUNT(SND.NU_MANI) TOTAL_ACEPT-- SND.NU_GUIA_MADR, SND.NU_ORDEN, RESP.CODERROR
+                 FROM ENVIOS_SITRADE SND INNER JOIN TT_RESPUESTA_ADUANA RESP 
+                   ON SND.NU_ORDEN = RESP.NUMORDEN
+                WHERE RESP.CODERROR IS NULL
+                  AND RESP.FE_CREA BETWEEN TRUNC(SYSDATE) AND TRUNC(SYSDATE+1)
+                GROUP BY SND.NU_MANI
 
 
 
------------------------
-0016:  	0016 - UNITED AIRLINES
-5591:   Clave
+-------------------------
+TT_PASO_PROCESO_VUELO
 
-Registro de Fecha de Llegada y Autorización de la Descarga
-Registro de la Fecha y Hora del Termino de Descarga 
-
-envio 3: transmision provisional(esta no esta en un vuelo)
-
-envio 4: transmision de rectificacion(se rectifica datos de consignatario, shipper, bultos y peso)
-  menos numero de guia hija y contenido
-
-envio 6: envio de la complementaria 
+SELECT TLMTRADU.FN_COLOR_PROCES(SYSDATE, 'XL', '1450', 2) from dual
+SELECT TLMTRADU.FN_COLOR_PROCES(SYSDATE, 'XL', '1450', 5) from dual
 
 
-Transmisiones
-----------------------------
-Se creará un nuevo sitio web para el tablero de transmisiones, no se usara el de PCO ya que su seguridad apunta a "Gestion de usuarios" que solo funciona en IE mas no en chrome
+EDIT TT_MANIFIESTOPROVISIONAL WHERE FECHASALIDALLEGADA = '23/03/2018' and AEROLINEA = 'LP' AND VUELO = '2477'
+EDIT TC_VUELO WHERE TO_CHAR(FEC_VUELO, 'DD/MM/YYYY')  = '23/03/2018' AND IMPORT_EXPORT = 'IM' AND NUM_VUELO = '2477'
 
+ESTADO:
+------ 
+PENDIENTE
+CERRADO
 
-tlmsrvweb2
-
-
-Quitar la columna de manifiesto provisional ya que dicha columna es la misma que la columna numeración de la grilla madre
-
-Encasillar las columnas de procesos por responsbilidad en la grilla hija
-
-
-No mostrar los bultos manifestado en la grilla madre
-
-Para faltos totales la se debe transmitir el anexo 6 hijo o master y bloquearse la columna del enexo 5 y 7 ya que esta guia nunca llego(se reconoce un falto por la letra F)
-
-
-El error se puede visualizarlo posandose en la celda del error y que se levante un tooltip del error en la cela o la otra alternativa es que se levante una ventana desde al columna tipo de error por todos los errores que se generaron
-
-
-reabrir el vuelo por cambio de modalidad, se da cuento el vuelo ya fue cerrado y desaparecio del tablero(caso: cambio de modalidad) el cambio se da de los 02 a los 03  
-la guia inicialmente no hiba a ingresar al almacen porque esta dirigida a otro almacen , despues se decide que se va a tarjar en talma por lo que se ingresa la guia en hermes y deberia visualizarse en el tablero para visualizar todas sus transmisiones.
-
-
-cuando se incorpoara una guia despues de cerrado el vuelo o antes porque esa guia no fue declarada en el manifiesto(esas guias se presenta expediente) por lo que yo tendria que descartar estas guias para esto manifiestos registrará en gestion de guias la palabra "ADICION DE GUIA" para lo cual me daria el indicador de que no debo considerar esa guia en el vuelo ni el el tablero 
-
-
-TAblero expo:
-La columna bultos manifestados debera ser reemplazada por numero de guias "NUMERO GUIAS"
-
-Las guias de expo se deberá jalarlas del sistema de sitrade, igualmente para los agentes de carga de exportación
-
-
---------
-
-Modificar el servicio web para que nos grabe el terminal(actualmente se graba pordefecto 3507)
-verificar igualmente el SHC
-
-reunirse con TCI para que nos devuelvan el manifiesto, 
-
-Fuentes:  \\172.16.28.21\ImpoWCF
-
-----
-ver el tema de la modificación del servicio ACMA
-ver el tema de la Teledespacho
-
-------------
+ESTADO      TIPO        USUARIO     MOTIVO CIERRE
+FINALIZADO  MANUAL      LAN         SE CERRO DEBIDO A QUE SE REALIZARÁ LA TRANSMISION POR EXPEDIENTE 
+FINALIZADO  AUTOMATICO  PROCESO     PROCESO
 
 
 
-GHA: Solo visualizará los indicadores de las responsabilidades del transportista y solo las líneas aéreas del grupo al que pertenece
-IMPO: Visualizará los indicadores de todos los grupos de responsabilidades
-EXPO: visualizara los indicadores de todos 
+select * from TLMIMPO.TMREGISTROS_ACMA   where
+substr(GUFECHAVUELO, 10) = '2018-03-22'
+ 
+GUCODAEROLINEALET = 'LA' and GUIMPORTEXPORT = 'I' and GUNUMVUELO = '0601'
+--nd GUNUMGUIA = '004503307581'
+and substr(GUFECHAVUELO, 10) = '2018-03-22'
 
+EDIT TT_MANIFIESTOPROVISIONAL
