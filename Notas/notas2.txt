@@ -1,0 +1,60 @@
+Transmisiones Teledespacho
+--------------------------
+
+Tablero GHA
+------------------------------
+- LA TABLA DE VUELOS SE DEBE ACTUALIZAR
+-No mostrar los bultos manifestado en la grilla madre
+-Para faltos totales se debe transmitir el anexo 6 hijo o master y bloquearse la columna del enexo 5 y 7, ya que esta guía núnca llego(se reconoce un falto por la letra F)
+
+
+
+Tablero IMPO
+---------------
+-Encasillar las columnas de procesos por responsabilidad en la grilla hija
+-Quitar la columna de manifiesto provisional en la grilal hija ya que dicha columna es la misma que la columna numeración de la grilla madre
+-Para faltos totales la se debe transmitir el anexo 6 hijo o master y bloquearse la columna del enexo 5 y 7 ya que esta guia nunca llego(se reconoce un falto por la letra F)
+-El error se puede visualizarlo posandose en la celda del error y que se levante un tooltip del error en la cela o la otra alternativa es que se levante una ventana desde la columna tipo de error por todos los errores que se generaron
+-Reabrir el vuelo por cambio de modalidad, se da cuento el vuelo ya fue cerrado y desaparecio del tablero(caso: cambio de modalidad) el -cambio se da de los 02 a los 03 
+La guia inicialmente no hiba a ingresar al almacen porque esta dirigida a otro almacen , despues se decide que se va a tarjar en talma por lo que se ingresa la guia en hermes y deberia visualizarse en el tablero para visualizar todas sus transmisiones.
+-Cuando se incorpoara una guia despues de cerrado el vuelo o antes porque esa guia no fue declarada en el manifiesto(esas guias se presenta expediente) por lo que yo tendria que descartar estas guias para esto manifiestos registrará en gestion de guias la palabra "ADICION DE GUIA" para lo cual me daria el indicador de que no debo considerar esa guia en el vuelo ni el el tablero 
+-Tomar como modelo para el visor de transmisiones de TCI que se instaló
+
+
+Tablero EXPO
+----------------
+-La columna bultos manifestados debera ser reemplazada por numero de guias "NUMERO GUIAS"
+-Las guias de expo se deberá jalarlas del sistema de sitrade, igualmente para los agentes de carga de exportación
+
+Servicio WCF
+-------------
+-Modificar el servicio web para que nos grabe el terminal(actualmente se graba pordefecto 3507)
+-verificar igualmente el SHC
+-Verificar que se estan guardando todos los campos que TCI nos esta pasando.
+
+Fuentes:  \\172.16.28.21\ImpoWCF
+
+
+VARIOS
+-------
+MFTO: 235-2018-7281/ VUELO: DL-151 / MAT: N843MH
+-----------------
+Correo hermes:
+hermes@talma.com.pe
+H3rm3s$CTX
+------------------
+Servicio que lee los archivos de respuesta estaran en este server
+172.16.79.188
+tlmusrwebc.prd
+tlmc4rg4.
+-----------------------
+0016:  	0016 - UNITED AIRLINES
+5591:   Clave
+---------------------
+envio 3: transmision provisional(esta no esta en un vuelo)
+
+envio 4: transmision de rectificacion(se rectifica datos de consignatario, shipper, bultos y peso)
+  menos numero de guia hija y contenido
+
+envio 6: envio de la complementaria 
+--------
