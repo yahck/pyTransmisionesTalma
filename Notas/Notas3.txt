@@ -1,0 +1,51 @@
+http://172.16.79.188/appWebTableroTransmisiones/TestDona.aspx
+http://www.aduanet.gob.pe/aduanas/informao/romamenu.htm
+
+
+solo transmite la provisional 
+                  complementario 
+
+Restricciones (ADU_LAGI_SIOP_RESUMEN)
+-------------
+AWB DIRECTAS (ANEXO 5,6 AWB ,7 AWB), NO TIENE (PROVISIONAL, COMPLEMENTARIO, ANEXO7 HAWB Y ANEXO6 HAWB)
+AWB CONSOLIDADO (TODO)
+AWB DIRECCIONADA (ANEX 5 Y 6 AWB)  NO TIENE (PROVISIONAL, COMPLEMENTARIO, ANEXO7 AWB, ANEXO 7 HAWB, ANEXO6 HAWB)
+    (DIRECCIONADA=CODIGO DEL TERMINAL DIFERENTE A 3507)
+
+
+Si no tiene provisional, no tiene complementaria
+Sabremos cuando se tiene provisional y complementaria porque hay que registrar en una tabla los que van a tener dicho envio(manda el correo para pedirle a Gonzalo los agentes a los que si les brndamos el servicio).
+
+
+
+Tiempos en plazos para anexo 7, anexo 6, provisional y complementario
+Mandar correo para que actualizen y nos proporcionene los agentes que realizan envio provisional y complementrario
+a los que se les va a brindar el servicio de provisional y complementario
+(me conviene solicitar los agentes con los que no vamos a trabajar)
+---------------------------------
+AGENTE
+Transmision Provisional 
+-TipoEnvio = 3
+
+Complementaria
+-TipoEnvio = 6
+-ENVIO CoMPLEMENTARIO
+
+DEPOSITO TEMPORAL
+Anexo 7 AWB 
+-TipoEnvio = 1
+- ICA (ANEXO7)
+
+Anexo 7 HAWB 
+-TipoEnvio = 3
+-TARJA AL DETALLE (ANEXO 8)
+
+LINEA
+-----
+ANEXO5
+
+
+
+1000  guia1 mani1 todos()
+
+
