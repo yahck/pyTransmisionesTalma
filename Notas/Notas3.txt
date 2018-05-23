@@ -46,6 +46,3 @@ ANEXO5
 
 
 
-1000  guia1 mani1 todos()
-
-
